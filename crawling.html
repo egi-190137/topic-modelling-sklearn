@@ -1,0 +1,553 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Crawling Data &#8212; My sample book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Import Library" href="preprocessing_seleksi.html" />
+    <link rel="prev" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Crawling Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="preprocessing_seleksi.html">
+   Import Library
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcrawling.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/crawling.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Crawling Data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#melakukan-crawling-link-jurnal">
+     Melakukan Crawling link jurnal
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#crawling-informasi-detail-jurnal">
+   Crawling Informasi Detail Jurnal
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Crawling Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Crawling Data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#melakukan-crawling-link-jurnal">
+     Melakukan Crawling link jurnal
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#crawling-informasi-detail-jurnal">
+   Crawling Informasi Detail Jurnal
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="crawling-data">
+<h1>Crawling Data<a class="headerlink" href="#crawling-data" title="Permalink to this headline">#</a></h1>
+<section id="melakukan-crawling-link-jurnal">
+<h2>Melakukan Crawling link jurnal<a class="headerlink" href="#melakukan-crawling-link-jurnal" title="Permalink to this headline">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+<span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;quotes&quot;</span>
+
+    <span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">urls</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">33</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;https://pta.trunojoyo.ac.id/c_search/byprod/10/</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">jurnal</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;#content_journal &gt; ul &gt; li&#39;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="p">{</span>
+                <span class="s1">&#39;link&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div:nth-child(3) &gt; a::attr(href)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+<p>Hasil Crawling link jurnal :</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100124">https://pta.trunojoyo.ac.id/welcome/detail/070411100124</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100124">https://pta.trunojoyo.ac.id/welcome/detail/070411100124</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100124">https://pta.trunojoyo.ac.id/welcome/detail/070411100124</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100124">https://pta.trunojoyo.ac.id/welcome/detail/070411100124</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100124">https://pta.trunojoyo.ac.id/welcome/detail/070411100124</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>…</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="crawling-informasi-detail-jurnal">
+<h1>Crawling Informasi Detail Jurnal<a class="headerlink" href="#crawling-informasi-detail-jurnal" title="Permalink to this headline">#</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<span class="k">class</span> <span class="nc">QuotesSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;quote&quot;</span>
+
+    <span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;link.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span> <span class="n">link</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">data_csv</span> <span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">start_urls</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="p">{</span>
+            <span class="s1">&#39;Judul&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;#content_journal &gt; ul &gt; li &gt; div:nth-child(2) &gt; a::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">(),</span>
+            <span class="s1">&#39;Abstraksi&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;#content_journal &gt; ul &gt; li &gt; div:nth-child(4) &gt; div:nth-child(2) &gt; p::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">(),</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>Hasil Crawling detail jurnal:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Judul</p></th>
+<th class="head"><p>Abstraksi</p></th>
+<th class="head"><p>FIELD3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN KARYAWAN BERPRESTASI DENGAN INTEGRASI FAHP dan ELECTRE II</p></td>
+<td><p>Sumber daya manusia mutlak dibutuhkan untuk kemajuan suatu perusahaan guna menjadikan perusahaan itu menjadi perusahaan yang maju dan tidak kalah bersaing dengan perusahaan lainnya. Dalam hal ini maka dibuatlah Sistem Pendukung keputusan (SPK) pemilihan karyawan berprestasi untuk mencari karyawan berprestasi. Sistem Pendukung keputusan (SPK) ini menggunakan FAHP dan ELECTRE II. Metode FAHP merupakan metode yang cukup obyektif untuk proses penilaian berdasarkan hirarki kriteria yang digabungkan dengan konsep fuzzy sesuai kriteria penilaian kinerja karyawan perusahaan. Setelah mendapat bobot dilakukan proses selanjutnya dengan menggunakan metode ELECTRE II hingga mendapat karyawan berprestasi. Untuk menjaga bahwa penilaian ini tidak berpihak kepada salah satu karyawan dan bebas intervensi dari karyawan maka perusahaan menggunakan pihak luar yang independen dan profesional untuk melakukan penilaian terhadap karyawan. Hasil penilaian dari pihak luar yang berupa angka-angka kemudian oleh departemen sdm dilakukan penjumlahan nilai komulatif kriteria untuk mendapat karyawan terbaik tanpa ada prioritas kriteria yang lebih penting. Dengan menggunakan metode FAHP dan ELECTREII hasil keluaran mendekati keakuratan dengan hasil yang diperoleh dari areal manager di banding dengan hitung manual perusahaan tanpa memperhatikan bobot kepentingan.</p></td>
+<td><p>CAI</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gerak Pekerja Pada Game Real Time Strategy Menggunakan Finite State Machine</p></td>
+<td><p>Gerak pekerja ada pada game yang memiliki genre RTS (Real-Time Strategy). Gerak pekerja memiliki berbagai macam gerak. Oleh sebab itu dibutuhkan sebuah pendekatan konsep AI  untuk mendesain perilaku pekerja tersebut. Perilaku karakter tersebut harus ditambahi dengan AI (Artifical intelegent) agar perilakunya menjadi lebih hidup dan realistis. Dalam penelitian ini AI yang digunakan adalah Finite State Machine. Finite State Machine digunakan untuk menentukan gerak pekerja terhadap parameter-parameter yang digunakan sebagai dasar gerak yang akan dilakukan . Selanjutnya akan disimulasikan pada game RTS dengan menggunakan game engine. Hasil yang di peroleh dalam penelitian ini adalah penerapan metode Finite State machine untuk menentukan gerak pekerja berdasarkan parameter jumlah harta, prajurit, kondisi bangunan, dan stockpile (jumlah resources yang di bawa).   Kata kunci : Game, Real-Time Strategy, Gerak Pekerja, Finite State Machine.</p></td>
+<td><p>CAI</p></td>
+</tr>
+<tr class="row-even"><td><p>SISTEM PENENTUAN STATUS GIZI PASIEN RAWAT INAP MENGGUNAKAN METODE NAÏVE BAYES CLASSIFIER (STUDI KASUS : RSUD DR. H. SLAMET MARTODIRDJO PAMEKASAN)</p></td>
+<td><p>Di Indonesia masalah perkembangan gizi adalah masalah yang perlu perhatian lebih. Jika seseorang tidak mengetahui tentang status gizinya, maka tidak akan dapat mengontrol berapa banyak jumlah gizi yang dibutuhkan dalam tubuh. Dalam penelitian ini dirancang aplikasi sistem pendukung keputusan yang digunakan untuk menentukan status gizi pasien dan memberikan solusi makanan pada pasien sesuai riwayat penyakit yang di derita pasien. Sistem yang dirancang ini berbasis Web, dan memudahkan pihak admin atau ahli gizi rumah sakit dalam penentuan status gizi pasien. Diharapkan dengan adanya aplikasi ini dapat memberikan efisien dan efektifitas kinerja setiap pihak. Metode yang digunakan dalam penelitian ini menggunakan Naïve Bayes Classifier (NBC). Metode terbaru yang di gunakan untuk memprediksi probabilitas.Metode Naïve bayes Classifier melakukan proses penentuan perhitungan probabilitas status gizi. Dimana dicari nilai probabilitas terbesar yang kemudian menjadi kesimpulan penentuan status gizi. Metode ini dapat diterapkan dalam studi kasus Sistem Penentuan Status Gizi Pasien dengan hasil akurasi terbesar 92%. Kata Kunci : Naïve Bayes Classifier, Sistem Pendukung Keputusan, Status Gizi, Web</p></td>
+<td><p>CAI</p></td>
+</tr>
+<tr class="row-odd"><td><p>RANCANG BANGUN MANAJEMEN PEMBELAJARAN DAN TES TOEFL BERBASIS MOBILE</p></td>
+<td><p>Penggunaan teknologi mobile saat ini sangat marak, disamping keunggulannya dapat mudah bawa dibawa kemana-mana, teknologi mobile sekarang sangat mudah untuk dieksplorasi, terbukti dengan adanya smartphone yang mempunyai banyak layanan yang dapat bermanfaat bagi para penggunanya. Toefl (Test Of English As A Foreign Languange) sangat dibutuhkan dalam menghadapi kemajuan teknologi saat ini, Kurang besarnya minat masyarakat dalam belajar bahasa inggris dan mengikuti tes-tes Toefl yang ada, berpengaruh pada kemajuan teknologi.  Android  merupakan  subset  perangkat  lunak  untuk perangkat  mobile  yang  meliputi  sistem  operasi, middleware,  dan  aplikasi  inti  yang  di  release  oleh Google. Android SDK adalah  tools  API (Application Programming Interface)  yang digunakan untuk memulai membuat aplikasi pada platform Android dengan menggunakan bahasa pemrograman Java. Eclipse adalah sebuah IDE (Integrated Development Environment) yang digunakan dalam  coding  aplikasi Android nantinya. Salah satu pemanfaatan teknologi mobile yaitu dengan membuat media pembelajaran dan tes TOEFL baik soal berupa teks dan audio dengan menggunakan  teknologi Android, tentunya berbasis mobile. Dengan tes TOEFL, pembelajaran test dan kelebihan listening menu di dalam aplikasi ini, diharapkan akan dapat membatu meningkatkan pemahaman pengguna mengenai tes TOEFL.  Kata Kunci: tes TOEFL, ANDROID, Java , Mobile, SDK</p></td>
+<td><p>RPL</p></td>
+</tr>
+<tr class="row-even"><td><p>RANCANG BANGUN APLIKASI SEARCH ENGINE DAN SISTEM PENDETEKSI PLAGIARISME MENGGUNAKAN METODE LSA-SOM</p></td>
+<td><p>Plagiarisme adalah mencuri gagasan, kata-kata, kalimat atau hasil penelitian orang lain dan menyajikannya seolah-olah sebagai karya sendiri. Metode LSA merupakan salah satu metode dari beberapa metode untuk pendeteksian plagiarisme. Metode Latent Semantic Analysis (LSA) adalah sebuah teori dan metode untuk menggali dan mempresentasikan konteks yang digunakan sebagai sebuah arti kata dengan memanfaatkan komputasi statistik untuk sejumlah corpus yang besar. Penggunaan LSA konvensional bersifat sekuensial dikarenakan masih belum adanya klasterisasi sehingga proses analisa akan dilakukan secara global pada keseluruhan dokumen yang tentunya memerlukan waktu komputasi yang besar. Untuk itu dapat digunakan teknik klasifikasi tak terawasi seperti penggunaan Self Organizing Map (SOM) dan pengujian similaritas secara global hanya dilakukan pada centroid masing-masing kluster untuk kemudian dilakukan pengujian similaritas secara lokal pada klaster yang terpilih yang menjadi bagian dari klaster tersebut. Pada hasil penelitian  LSA-SOM memiliki rata-rata precision 94.4% dan recall 64.04%.  Kata kunci : Cosine Similarity, Latent Semantic Analysis, plagiarisme Self Organizing Map, Singular Value Decomposition</p></td>
+<td><p>CAI</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="markdown-notebooks.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Notebooks with MyST Markdown</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="preprocessing_seleksi.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Import Library</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
