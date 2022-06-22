@@ -14,6 +14,9 @@ in the Sphinx ecosystem.
 
 For more about MyST, see [the MyST Markdown Overview](https://jupyterbook.org/content/myst.html).
 
+$$
+w_{i,j} = tf_{i,j} \times log( {{N} \over {df_{j}}} )
+$$
 ## Sample Roles and Directives
 
 Roles and directives are two of the most powerful tools in Jupyter Book. They
