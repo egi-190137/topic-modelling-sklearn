@@ -9,3 +9,4 @@ chapters:
 - file: markdown-notebooks
 - file: crawling
 - file: preprocessing-seleksi
+- file: topic-modelling-using-lda-and-lsa-in-sklearn
