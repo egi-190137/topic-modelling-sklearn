@@ -1,19 +1,19 @@
 Traceback (most recent call last):
-  File "/home/egiputra/.local/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+  File "C:\Users\Egi Putra Ragil\AppData\Roaming\Python\Python310\site-packages\jupyter_cache\executors\utils.py", line 51, in single_nb_execution
     executenb(
-  File "/home/egiputra/.local/lib/python3.8/site-packages/nbclient/client.py", line 1117, in execute
+  File "C:\Users\Egi Putra Ragil\AppData\Roaming\Python\Python310\site-packages\nbclient\client.py", line 1204, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/home/egiputra/.local/lib/python3.8/site-packages/nbclient/util.py", line 78, in wrapped
+  File "C:\Users\Egi Putra Ragil\AppData\Roaming\Python\Python310\site-packages\nbclient\util.py", line 84, in wrapped
     return just_run(coro(*args, **kwargs))
-  File "/home/egiputra/.local/lib/python3.8/site-packages/nbclient/util.py", line 57, in just_run
+  File "C:\Users\Egi Putra Ragil\AppData\Roaming\Python\Python310\site-packages\nbclient\util.py", line 62, in just_run
     return loop.run_until_complete(coro)
-  File "/usr/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+  File "C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 646, in run_until_complete
     return future.result()
-  File "/home/egiputra/.local/lib/python3.8/site-packages/nbclient/client.py", line 558, in async_execute
+  File "C:\Users\Egi Putra Ragil\AppData\Roaming\Python\Python310\site-packages\nbclient\client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/home/egiputra/.local/lib/python3.8/site-packages/nbclient/client.py", line 862, in async_execute_cell
-    self._check_raise_for_error(cell, exec_reply)
-  File "/home/egiputra/.local/lib/python3.8/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+  File "C:\Users\Egi Putra Ragil\AppData\Roaming\Python\Python310\site-packages\nbclient\client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Egi Putra Ragil\AppData\Roaming\Python\Python310\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
@@ -22,45 +22,48 @@ result = pd.concat([x_dtm[X_dtm_kbest], data["Bidang Minat"]], axis=1)
 result.head()
 ------------------
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mKeyError[0m                                  Traceback (most recent call last)
-[0;32m~/.local/lib/python3.8/site-packages/pandas/core/indexes/base.py[0m in [0;36mget_loc[0;34m(self, key, method, tolerance)[0m
-[1;32m   3620[0m             [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 3621[0;31m                 [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_engine[0m[0;34m.[0m[0mget_loc[0m[0;34m([0m[0mcasted_key[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   3622[0m             [0;32mexcept[0m [0mKeyError[0m [0;32mas[0m [0merr[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mKeyError[0m                                  Traceback (most recent call last)
+File [1;32m~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\indexes\base.py:3621[0m, in [0;36mIndex.get_loc[1;34m(self, key, method, tolerance)[0m
+[0;32m   3620[0m [38;5;28;01mtry[39;00m:
+[1;32m-> 3621[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_engine[49m[38;5;241;43m.[39;49m[43mget_loc[49m[43m([49m[43mcasted_key[49m[43m)[49m
+[0;32m   3622[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m err:
 
-[0;32m~/.local/lib/python3.8/site-packages/pandas/_libs/index.pyx[0m in [0;36mpandas._libs.index.IndexEngine.get_loc[0;34m()[0m
+File [1;32m~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\_libs\index.pyx:136[0m, in [0;36mpandas._libs.index.IndexEngine.get_loc[1;34m()[0m
 
-[0;32m~/.local/lib/python3.8/site-packages/pandas/_libs/index.pyx[0m in [0;36mpandas._libs.index.IndexEngine.get_loc[0;34m()[0m
+File [1;32m~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\_libs\index.pyx:163[0m, in [0;36mpandas._libs.index.IndexEngine.get_loc[1;34m()[0m
 
-[0;32mpandas/_libs/hashtable_class_helper.pxi[0m in [0;36mpandas._libs.hashtable.PyObjectHashTable.get_item[0;34m()[0m
+File [1;32mpandas\_libs\hashtable_class_helper.pxi:5198[0m, in [0;36mpandas._libs.hashtable.PyObjectHashTable.get_item[1;34m()[0m
 
-[0;32mpandas/_libs/hashtable_class_helper.pxi[0m in [0;36mpandas._libs.hashtable.PyObjectHashTable.get_item[0;34m()[0m
+File [1;32mpandas\_libs\hashtable_class_helper.pxi:5206[0m, in [0;36mpandas._libs.hashtable.PyObjectHashTable.get_item[1;34m()[0m
 
-[0;31mKeyError[0m: 'Bidang Minat'
+[1;31mKeyError[0m: 'Bidang Minat'
 
 The above exception was the direct cause of the following exception:
 
-[0;31mKeyError[0m                                  Traceback (most recent call last)
-[0;32m/tmp/ipykernel_13670/111542398.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0;31m# Menampilkan 10 term paling relevan dan menambahkan kolom "Bidang Minat"[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 2[0;31m [0mresult[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mconcat[0m[0;34m([0m[0;34m[[0m[0mx_dtm[0m[0;34m[[0m[0mX_dtm_kbest[0m[0;34m][0m[0;34m,[0m [0mdata[0m[0;34m[[0m[0;34m"Bidang Minat"[0m[0;34m][0m[0;34m][0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      3[0m [0mresult[0m[0;34m.[0m[0mhead[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;31mKeyError[0m                                  Traceback (most recent call last)
+Input [1;32mIn [20][0m, in [0;36m<cell line: 2>[1;34m()[0m
+[0;32m      1[0m [38;5;66;03m# Menampilkan 10 term paling relevan dan menambahkan kolom "Bidang Minat"[39;00m
+[1;32m----> 2[0m result [38;5;241m=[39m pd[38;5;241m.[39mconcat([x_dtm[X_dtm_kbest], [43mdata[49m[43m[[49m[38;5;124;43m"[39;49m[38;5;124;43mBidang Minat[39;49m[38;5;124;43m"[39;49m[43m][49m], axis[38;5;241m=[39m[38;5;241m1[39m)
+[0;32m      3[0m result[38;5;241m.[39mhead()
 
-[0;32m~/.local/lib/python3.8/site-packages/pandas/core/frame.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
-[1;32m   3503[0m             [0;32mif[0m [0mself[0m[0;34m.[0m[0mcolumns[0m[0;34m.[0m[0mnlevels[0m [0;34m>[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   3504[0m                 [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_getitem_multilevel[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 3505[0;31m             [0mindexer[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mcolumns[0m[0;34m.[0m[0mget_loc[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   3506[0m             [0;32mif[0m [0mis_integer[0m[0;34m([0m[0mindexer[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   3507[0m                 [0mindexer[0m [0;34m=[0m [0;34m[[0m[0mindexer[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+File [1;32m~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\frame.py:3505[0m, in [0;36mDataFrame.__getitem__[1;34m(self, key)[0m
+[0;32m   3503[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mcolumns[38;5;241m.[39mnlevels [38;5;241m>[39m [38;5;241m1[39m:
+[0;32m   3504[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_getitem_multilevel(key)
+[1;32m-> 3505[0m indexer [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcolumns[49m[38;5;241;43m.[39;49m[43mget_loc[49m[43m([49m[43mkey[49m[43m)[49m
+[0;32m   3506[0m [38;5;28;01mif[39;00m is_integer(indexer):
+[0;32m   3507[0m     indexer [38;5;241m=[39m [indexer]
 
-[0;32m~/.local/lib/python3.8/site-packages/pandas/core/indexes/base.py[0m in [0;36mget_loc[0;34m(self, key, method, tolerance)[0m
-[1;32m   3621[0m                 [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_engine[0m[0;34m.[0m[0mget_loc[0m[0;34m([0m[0mcasted_key[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   3622[0m             [0;32mexcept[0m [0mKeyError[0m [0;32mas[0m [0merr[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 3623[0;31m                 [0;32mraise[0m [0mKeyError[0m[0;34m([0m[0mkey[0m[0;34m)[0m [0;32mfrom[0m [0merr[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   3624[0m             [0;32mexcept[0m [0mTypeError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   3625[0m                 [0;31m# If we have a listlike key, _check_indexing_error will raise[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+File [1;32m~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\indexes\base.py:3623[0m, in [0;36mIndex.get_loc[1;34m(self, key, method, tolerance)[0m
+[0;32m   3621[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_engine[38;5;241m.[39mget_loc(casted_key)
+[0;32m   3622[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m err:
+[1;32m-> 3623[0m     [38;5;28;01mraise[39;00m [38;5;167;01mKeyError[39;00m(key) [38;5;28;01mfrom[39;00m [38;5;21;01merr[39;00m
+[0;32m   3624[0m [38;5;28;01mexcept[39;00m [38;5;167;01mTypeError[39;00m:
+[0;32m   3625[0m     [38;5;66;03m# If we have a listlike key, _check_indexing_error will raise[39;00m
+[0;32m   3626[0m     [38;5;66;03m#  InvalidIndexError. Otherwise we fall through and re-raise[39;00m
+[0;32m   3627[0m     [38;5;66;03m#  the TypeError.[39;00m
+[0;32m   3628[0m     [38;5;28mself[39m[38;5;241m.[39m_check_indexing_error(key)
 
-[0;31mKeyError[0m: 'Bidang Minat'
+[1;31mKeyError[0m: 'Bidang Minat'
 KeyError: 'Bidang Minat'
 

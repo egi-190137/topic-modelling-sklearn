@@ -369,91 +369,117 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Topic Modelling using Latent Semantic Analysis (LSA) and Latent Dirichlet Allocation (LDA) in sklearn
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-library">
+   Import Library
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importing-modules">
-     IMPORTING MODULES
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loading-the-dataset">
-     LOADING THE DATASET
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-cleaning-pre-processing">
-     DATA CLEANING &amp; PRE-PROCESSING
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extracting-the-features-and-creating-the-document-term-matrix-dtm">
-     EXTRACTING THE FEATURES AND CREATING THE DOCUMENT-TERM-MATRIX ( DTM )
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#we-can-now-see-the-most-frequent-and-rare-words-in-the-news-headlines-based-on-idf-score-the-lesser-the-value-more-common-is-the-word-in-the-news-headlines">
-     We can now see the most frequent and rare words in the news headlines based on idf score. The lesser the value; more common is the word in the news headlines.
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#topic-modelling">
-     TOPIC MODELLING
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#library-yang-digunakan">
+     Library yang digunakan
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#latent-semantic-analysis-lsa">
-   Latent Semantic Analysis (LSA)
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#membaca-data">
+   Membaca Data
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#now-e-can-get-a-list-of-the-important-words-for-each-of-the-10-topics-as-shown-for-simplicity-here-i-have-shown-10-words-for-each-topic">
-     Now e can get a list of the important words for each of the 10 topics as shown. For simplicity here I have shown 10 words for each topic.
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pre-processing-data">
+   Pre-processing Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perbedaan-data-awal-dengan-data-yang-telah-di-preprocessing">
+     Perbedaan data awal dengan data yang telah di-preprocessing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hapus-kolom-judul">
+     Hapus kolom ‘judul’
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mengganti-nama-kolom-cleaned-judul-dengan-judul">
+     Mengganti nama kolom
+     <strong>
+      cleaned_judul
+     </strong>
+     dengan
+     <strong>
+      judul
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contoh-judul-yang-telah-di-lakukan-pre-processing">
+     Contoh judul yang telah di lakukan
+     <em>
+      pre-processing
+     </em>
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ekstraksi-fitur-dan-membuat-document-term-matrix-dtm">
+   Ekstraksi fitur dan membuat Document Term Matrix (DTM)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#menyimpan-hasil-tfidf-ke-dalam-dataframe">
+     Menyimpan hasil tfidf ke dalam DataFrame
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#topic-modelling">
+   TOPIC MODELLING
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#latent-semantic-analysis-lsa">
+     Latent Semantic Analysis (LSA)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#singular-value-decomposition">
+       Singular Value Decomposition
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#latent-dirichlet-allocation-lda">
    Latent Dirichlet Allocation (LDA)
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#note-that-the-values-in-a-particular-row-adds-to-1-this-is-beacuse-each-value-denotes-the-of-contribution-of-the-corressponding-topic-in-the-document">
      Note that the values in a particular row adds to 1. This is beacuse each value denotes the % of contribution of the corressponding topic in the document.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#as-we-can-see-topic-7-8-are-dominantly-present-in-document-0">
      As we can see Topic 7 &amp; 8 are dominantly present in document 0.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#most-important-words-for-a-topic-say-10-this-time">
      Most important words for a topic. (say 10 this time.)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#to-better-visualize-words-in-a-topic-we-can-see-the-word-cloud-for-each-topic-top-50-words-are-plotted">
      To better visualize words in a topic we can see the word cloud. For each topic top 50 words are plotted.
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-end">
-   THE END !!!
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#please-star-upvote-in-case-u-liked-it">
-   [Please star/upvote in case u liked it. ]
-  </a>
  </li>
 </ul>
 
@@ -474,91 +500,117 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Topic Modelling using Latent Semantic Analysis (LSA) and Latent Dirichlet Allocation (LDA) in sklearn
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-library">
+   Import Library
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importing-modules">
-     IMPORTING MODULES
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loading-the-dataset">
-     LOADING THE DATASET
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-cleaning-pre-processing">
-     DATA CLEANING &amp; PRE-PROCESSING
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extracting-the-features-and-creating-the-document-term-matrix-dtm">
-     EXTRACTING THE FEATURES AND CREATING THE DOCUMENT-TERM-MATRIX ( DTM )
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#we-can-now-see-the-most-frequent-and-rare-words-in-the-news-headlines-based-on-idf-score-the-lesser-the-value-more-common-is-the-word-in-the-news-headlines">
-     We can now see the most frequent and rare words in the news headlines based on idf score. The lesser the value; more common is the word in the news headlines.
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#topic-modelling">
-     TOPIC MODELLING
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#library-yang-digunakan">
+     Library yang digunakan
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#latent-semantic-analysis-lsa">
-   Latent Semantic Analysis (LSA)
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#membaca-data">
+   Membaca Data
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#now-e-can-get-a-list-of-the-important-words-for-each-of-the-10-topics-as-shown-for-simplicity-here-i-have-shown-10-words-for-each-topic">
-     Now e can get a list of the important words for each of the 10 topics as shown. For simplicity here I have shown 10 words for each topic.
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pre-processing-data">
+   Pre-processing Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perbedaan-data-awal-dengan-data-yang-telah-di-preprocessing">
+     Perbedaan data awal dengan data yang telah di-preprocessing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hapus-kolom-judul">
+     Hapus kolom ‘judul’
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mengganti-nama-kolom-cleaned-judul-dengan-judul">
+     Mengganti nama kolom
+     <strong>
+      cleaned_judul
+     </strong>
+     dengan
+     <strong>
+      judul
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contoh-judul-yang-telah-di-lakukan-pre-processing">
+     Contoh judul yang telah di lakukan
+     <em>
+      pre-processing
+     </em>
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ekstraksi-fitur-dan-membuat-document-term-matrix-dtm">
+   Ekstraksi fitur dan membuat Document Term Matrix (DTM)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#menyimpan-hasil-tfidf-ke-dalam-dataframe">
+     Menyimpan hasil tfidf ke dalam DataFrame
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#topic-modelling">
+   TOPIC MODELLING
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#latent-semantic-analysis-lsa">
+     Latent Semantic Analysis (LSA)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#singular-value-decomposition">
+       Singular Value Decomposition
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#latent-dirichlet-allocation-lda">
    Latent Dirichlet Allocation (LDA)
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#note-that-the-values-in-a-particular-row-adds-to-1-this-is-beacuse-each-value-denotes-the-of-contribution-of-the-corressponding-topic-in-the-document">
      Note that the values in a particular row adds to 1. This is beacuse each value denotes the % of contribution of the corressponding topic in the document.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#as-we-can-see-topic-7-8-are-dominantly-present-in-document-0">
      As we can see Topic 7 &amp; 8 are dominantly present in document 0.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#most-important-words-for-a-topic-say-10-this-time">
      Most important words for a topic. (say 10 this time.)
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#to-better-visualize-words-in-a-topic-we-can-see-the-word-cloud-for-each-topic-top-50-words-are-plotted">
      To better visualize words in a topic we can see the word cloud. For each topic top 50 words are plotted.
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-end">
-   THE END !!!
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#please-star-upvote-in-case-u-liked-it">
-   [Please star/upvote in case u liked it. ]
-  </a>
  </li>
 </ul>
 
@@ -570,10 +622,29 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="topic-modelling-using-latent-semantic-analysis-lsa-and-latent-dirichlet-allocation-lda-in-sklearn">
+  <section class="tex2jax_ignore mathjax_ignore" id="topic-modelling-using-latent-semantic-analysis-lsa-and-latent-dirichlet-allocation-lda-in-sklearn">
 <h1>Topic Modelling using Latent Semantic Analysis (LSA) and Latent Dirichlet Allocation (LDA) in sklearn<a class="headerlink" href="#topic-modelling-using-latent-semantic-analysis-lsa-and-latent-dirichlet-allocation-lda-in-sklearn" title="Permalink to this headline">#</a></h1>
-<section id="importing-modules">
-<h2>IMPORTING MODULES<a class="headerlink" href="#importing-modules" title="Permalink to this headline">#</a></h2>
+<section id="import-library">
+<h2>Import Library<a class="headerlink" href="#import-library" title="Permalink to this headline">#</a></h2>
+<section id="library-yang-digunakan">
+<h3>Library yang digunakan<a class="headerlink" href="#library-yang-digunakan" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p><strong>Pandas</strong></p>
+<p>Untuk manipulasi dan membaca data dalam bentuk tabel</p>
+</li>
+<li><p><strong>matplotlib</strong></p>
+<p>Untuk membuat visualisasi data</p>
+</li>
+</ul>
+<!-- - **seaborn** -->
+<ul>
+<li><p><strong>PySastrawi</strong></p>
+<p>Untuk melakukan text processing</p>
+</li>
+<li><p><strong>scikit-learn</strong></p>
+<p>Untuk menghitung TF dan TF-IDF</p>
+</li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data visualisation and manipulation</span>
@@ -581,14 +652,14 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">style</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="c1"># import seaborn as sns</span>
 <span class="kn">from</span> <span class="nn">Sastrawi.StopWordRemover.StopWordRemoverFactory</span> <span class="kn">import</span> <span class="n">StopWordRemoverFactory</span>
 
 <span class="c1">#configure</span>
 <span class="c1"># sets matplotlib to inline and displays graphs below the corressponding cell.</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline  
 <span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">,</span><span class="n">color_codes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># sns.set(style=&#39;whitegrid&#39;,color_codes=True)</span>
 
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">string</span>
@@ -608,7 +679,8 @@ title="Print to PDF"
 <span class="c1"># from nltk import ne_chunk</span>
 
 <span class="c1"># vectorizers for creating the document-term-matrix (DTM)</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span><span class="p">,</span><span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="c1"># from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer</span>
 
 <span class="c1">#stop-words</span>
 <span class="c1"># stop_words=set(nltk.corpus.stopwords.words(&#39;english&#39;))</span>
@@ -616,12 +688,21 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="loading-the-dataset">
-<h2>LOADING THE DATASET<a class="headerlink" href="#loading-the-dataset" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./dataset_PTA.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Melakukan setting jumlah kolom maksimal pada output</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="membaca-data">
+<h2>Membaca Data<a class="headerlink" href="#membaca-data" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dataset_pta.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -691,19 +772,11 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
-<p>We will drop the <strong>‘publish_date’</strong> column as it is useless for our discussion.</p>
+<p>Data yang digunakan dalam program ini hanya data pada kolom ‘judul’. Untuk mengambil kolom ‘judul’ saja dapat dilakukan dengan inisialisasi ulang df dengan df[[‘judul’]]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop the publish date.</span>
-<span class="c1"># df.drop([&#39;Abstraksi&#39;, &#39;Bidang Minat&#39;],axis=1,inplace=True)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;judul&#39;</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;judul&#39;</span><span class="p">]]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -755,9 +828,11 @@ title="Print to PDF"
 </div></div></div>
 </div>
 </section>
-<section id="data-cleaning-pre-processing">
-<h2>DATA CLEANING &amp; PRE-PROCESSING<a class="headerlink" href="#data-cleaning-pre-processing" title="Permalink to this headline">#</a></h2>
-<p>Here I have done the data pre-processing. I have used the lemmatizer and can also use the stemmer. Also the stop words have been used along with the words wit lenght shorter than 3 characters to reduce some stray words.</p>
+<section id="pre-processing-data">
+<h2>Pre-processing Data<a class="headerlink" href="#pre-processing-data" title="Permalink to this headline">#</a></h2>
+<p>Terdapat beberapa tahapan dalam melakukan Pre-processing data, diantaranya <em>case folding</em> (Mengubah teks menjadi <em>lower case</em>), menghapus angka dan tanda baca, menghapus white space dan <em>stopword removal</em>. Semua tahapan <em>pre-processing</em> tersebut saya masukkan ke dalam fungsi clean_text, kemudian saya aplikasikan pada data judul pada dataframe dengan method <strong>.apply(clean_text)</strong>.</p>
+<p>Untuk menghapus stopword saya menggunakan library <strong>PySastrawi</strong>, karena <strong>PySastrawi</strong> memiliki list stopword bahasa indonesia yang lebih lengkap daripada library <strong>nltk</strong>.</p>
+<p>Pada Library <strong>PySastrawi</strong> penghapusan stopword dilakukan dengan membuata objek StopWordRemoverFactory, kemudian buat objek stopword remover dengan method create_stop_word_remover. Objek stopword remover memiliki method remove yang dapat digunakan untuk menghapus stopword dalam sebuah kalimat dengan memasukkan string ke dalam parameter method remove.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factory</span> <span class="o">=</span> <span class="n">StopWordRemoverFactory</span><span class="p">()</span>
@@ -793,6 +868,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<section id="perbedaan-data-awal-dengan-data-yang-telah-di-preprocessing">
+<h3>Perbedaan data awal dengan data yang telah di-preprocessing<a class="headerlink" href="#perbedaan-data-awal-dengan-data-yang-telah-di-preprocessing" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -852,11 +929,22 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
-<p>Can see the difference after removal of stopwords and some shorter words. aslo the words have been lemmatized as in <strong>‘calls’—&gt;’call’.</strong></p>
-<p>Now drop the unpre-processed column.</p>
+</section>
+<section id="hapus-kolom-judul">
+<h3>Hapus kolom ‘judul’<a class="headerlink" href="#hapus-kolom-judul" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;judul&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengganti-nama-kolom-cleaned-judul-dengan-judul">
+<h3>Mengganti nama kolom <strong>cleaned_judul</strong> dengan <strong>judul</strong><a class="headerlink" href="#mengganti-nama-kolom-cleaned-judul-dengan-judul" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;judul&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -886,7 +974,7 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>cleaned_judul</th>
+      <th>judul</th>
     </tr>
   </thead>
   <tbody>
@@ -914,10 +1002,12 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
-<p>We can also see any particular news headline.</p>
+</section>
+<section id="contoh-judul-yang-telah-di-lakukan-pre-processing">
+<h3>Contoh judul yang telah di lakukan <em>pre-processing</em><a class="headerlink" href="#contoh-judul-yang-telah-di-lakukan-pre-processing" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cleaned_judul&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;judul&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -928,375 +1018,263 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="extracting-the-features-and-creating-the-document-term-matrix-dtm">
-<h2>EXTRACTING THE FEATURES AND CREATING THE DOCUMENT-TERM-MATRIX ( DTM )<a class="headerlink" href="#extracting-the-features-and-creating-the-document-term-matrix-dtm" title="Permalink to this headline">#</a></h2>
-<p>In DTM the values are the TFidf values.</p>
-<p>Also I have specified some parameters of the Tfidf vectorizer.</p>
-<p>Some important points:-</p>
-<p><strong>1) LSA is generally implemented with Tfidf values everywhere and not with the Count Vectorizer.</strong></p>
-<p><strong>2) max_features depends on your computing power and also on eval. metric (coherence score is a metric for topic model). Try the value that gives best eval. metric and doesn’t limits processing power.</strong></p>
-<p><strong>3) Default values for min_df &amp; max_df worked well.</strong></p>
-<p><strong>4) Can try different values for ngram_range.</strong></p>
+</section>
+<section id="ekstraksi-fitur-dan-membuat-document-term-matrix-dtm">
+<h2>Ekstraksi fitur dan membuat Document Term Matrix (DTM)<a class="headerlink" href="#ekstraksi-fitur-dan-membuat-document-term-matrix-dtm" title="Permalink to this headline">#</a></h2>
+<p>Dalam perhitungan LSA (Latent Semantic Analysis) data yang diperlukan hanya TF-IDF. Sehingga pada program ini tidak perlu mencari nilai TF dari dokumen. Untuk mengetahui nilai TF-IDF dapat dilakukan dengan membuat objek dari kelas TfidfVectorizer yang disediakan library scikit-learn.</p>
+<p>Rumus Term Frequency:
+$<span class="math notranslate nohighlight">\(
+tf(t,d) = { f_{ t,d } \over \sum_{t' \in d } f_{t,d}}
+\)</span>$</p>
+<p><span class="math notranslate nohighlight">\( f_{ t,d } \quad\quad\quad\quad\)</span>: Jumlah kata t muncul dalam dokumen</p>
+<p><span class="math notranslate nohighlight">\( \sum_{t' \in d } f_{t,d} \quad\quad\)</span>: Jumlah seluruh kata yang ada dalam dokumen</p>
+<p>Rumus Inverse Document Frequency:
+$<span class="math notranslate nohighlight">\(
+idf( t,D ) = log { N \over { | \{ d \in D:t \in d \} | } }
+\)</span>$</p>
+<p><span class="math notranslate nohighlight">\( N \quad\quad\quad\quad\quad\)</span> : Jumlah seluruh dokumen</p>
+<p><span class="math notranslate nohighlight">\( | \{ d \in D:t \in d \} | \)</span> : Jumlah dokumen yang mengandung kata <span class="math notranslate nohighlight">\( t \)</span></p>
+<p>Rumus Inverse Document Frequency:
+$<span class="math notranslate nohighlight">\(
+tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
+\)</span>$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vect</span> <span class="o">=</span><span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="n">stop_words</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># to play with. min_df,max_df,max_features etc...</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vect</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Setelah objek <strong>TfidfVectorizer</strong> dibuat gunakan method <strong>fit_transform</strong> dengan argumen data yang akan dicari nilai <strong>TF-IDF</strong>-nya</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vect_text</span> <span class="o">=</span> <span class="n">vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;judul&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attr_count</span> <span class="o">=</span> <span class="n">vect</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Jumlah atribut dalam Document-Term Matrix : </span><span class="si">{</span><span class="n">attr_count</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_13722</span><span class="o">/</span><span class="mf">685002276.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">vect</span> <span class="o">=</span><span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="n">stop_words</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># to play with. min_df,max_df,max_features etc...</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah atribut dalam Document-Term Matrix : 358
+</pre></div>
+</div>
+</div>
+</div>
+<section id="menyimpan-hasil-tfidf-ke-dalam-dataframe">
+<h3>Menyimpan hasil tfidf ke dalam DataFrame<a class="headerlink" href="#menyimpan-hasil-tfidf-ke-dalam-dataframe" title="Permalink to this headline">#</a></h3>
+<p>Hasil tfidf perlu diubah terlebih dahulu menjadi array agar dapat digunakan sebagai data. Kemudian untuk parameter kolom-nya dapat didapatkan menggunakan method get_feature_names_out pada objek TfidfVectorizer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tfidf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">vect_text</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="n">vect</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">tfidf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;stop_words&#39; is not defined
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>acute</th>
+      <th>addie</th>
+      <th>additive</th>
+      <th>additiveweighting</th>
+      <th>adm</th>
+      <th>...</th>
+      <th>wafa</th>
+      <th>wajah</th>
+      <th>web</th>
+      <th>weight</th>
+      <th>weighting</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.300817</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 358 columns</p>
+</div></div></div>
+</div>
+<p>Mencari nilai <strong>idf</strong> dengan mengakses atribut <strong>idf_</strong> pada objek <strong>tfidfVectorizer</strong>. Atribut <strong>idf_</strong> hanya terdefinisi apabila parameter <strong>use_idf</strong> saat instansiasi objekk tfidfVectorizer bernilai <strong>True</strong>. Namun, <strong>use_idf</strong> sudah bernilai <strong>True</strong> secara default, sehingga kita dapat perlu menentukannya secara manual.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idf</span> <span class="o">=</span> <span class="n">vect</span><span class="o">.</span><span class="n">idf_</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vect</span> <span class="o">=</span><span class="n">TfidfVectorizer</span><span class="p">()</span> <span class="c1"># to play with. min_df,max_df,max_features etc...</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dd</span><span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">vect</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(),</span> <span class="n">idf</span><span class="p">))</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Kita dapat melihat kata yang paling sering dan paling jarang muncul pada judul tugas akhir berdasarkan nilai idf. Kata yang memiliki nilai lebih kecil, adalah kata yang paling sering muncul dalam judul</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vect_text</span><span class="o">=</span><span class="n">vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cleaned_judul&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vect</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5 Kata paling sering muncul:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">l</span><span class="p">[:</span><span class="mi">5</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="se">\t</span><span class="s2">(Nilai idf: </span><span class="si">{</span><span class="n">dd</span><span class="p">[</span><span class="n">word</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(358,)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 Kata paling sering muncul:
+1. sistem	(Nilai idf: 1.709676482511156)
+2. metode	(Nilai idf: 1.9753796482441615)
+3. berbasis	(Nilai idf: 2.11514159061932)
+4. studi	(Nilai idf: 2.220502106277147)
+5. rancang	(Nilai idf: 2.3382851419335298)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5 Kata paling jarang muncul:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">l</span><span class="p">[:</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="se">\t</span><span class="s2">(Nilai idf: </span><span class="si">{</span><span class="n">dd</span><span class="p">[</span><span class="n">word</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 Kata paling jarang muncul:
+1. weighting	(Nilai idf: 4.417726683613366)
+2. weight	(Nilai idf: 4.417726683613366)
+3. wajah	(Nilai idf: 4.417726683613366)
+4. wafa	(Nilai idf: 4.417726683613366)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="we-can-now-see-the-most-frequent-and-rare-words-in-the-news-headlines-based-on-idf-score-the-lesser-the-value-more-common-is-the-word-in-the-news-headlines">
-<h2>We can now see the most frequent and rare words in the news headlines based on idf score. The lesser the value; more common is the word in the news headlines.<a class="headerlink" href="#we-can-now-see-the-most-frequent-and-rare-words-in-the-news-headlines-based-on-idf-score-the-lesser-the-value-more-common-is-the-word-in-the-news-headlines" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">vect_text</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">vect_text</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(60, 358)
-  (0, 177)	0.3417036042362773
-  (0, 313)	0.3417036042362773
-  (0, 95)	0.3417036042362773
-  (0, 316)	0.3417036042362773
-  (0, 330)	0.3417036042362773
-  (0, 282)	0.3417036042362773
-  (0, 102)	0.256727822441395
-  (0, 229)	0.3417036042362773
-  (0, 105)	0.3417036042362773
-  (1, 32)	0.20641969178358682
-  (1, 134)	0.22600886231744027
-  (1, 79)	0.30081680321516097
-  (1, 25)	0.30081680321516097
-  (1, 318)	0.30081680321516097
-  (1, 261)	0.27320741803322734
-  (1, 262)	0.30081680321516097
-  (1, 70)	0.27320741803322734
-  (1, 125)	0.16361576547863482
-  (1, 302)	0.23283441952569553
-  (1, 258)	0.20641969178358682
-  (1, 4)	0.30081680321516097
-  (1, 334)	0.30081680321516097
-  (1, 230)	0.30081680321516097
-  (2, 208)	0.38434938308633926
-  (2, 40)	0.21826715333323735
-  :	:
-  (57, 258)	0.2559438390330787
-  (58, 276)	0.29476032576645844
-  (58, 210)	0.29476032576645844
-  (58, 41)	0.29476032576645844
-  (58, 117)	0.29476032576645844
-  (58, 181)	0.2677068125203333
-  (58, 64)	0.2677068125203333
-  (58, 299)	0.2677068125203333
-  (58, 49)	0.2677068125203333
-  (58, 168)	0.2677068125203333
-  (58, 176)	0.2677068125203333
-  (58, 0)	0.2677068125203333
-  (58, 37)	0.2485120394014813
-  (58, 215)	0.2677068125203333
-  (58, 202)	0.13180162339799475
-  (59, 1)	0.3894401087298768
-  (59, 174)	0.3894401087298768
-  (59, 320)	0.3894401087298768
-  (59, 120)	0.3894401087298768
-  (59, 207)	0.3894401087298768
-  (59, 20)	0.2568497275477606
-  (59, 23)	0.23148941316008512
-  (59, 40)	0.18645811070324775
-  (59, 33)	0.21181842509092322
-  (59, 277)	0.20612909877240965
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idf</span><span class="o">=</span><span class="n">vect</span><span class="o">.</span><span class="n">idf_</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dd</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">vect</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(),</span> <span class="n">idf</span><span class="p">))</span>
-<span class="n">l</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
-<span class="c1"># # print(l)</span>
-<span class="c1"># print(l[0],l[-1])</span>
-<span class="c1"># print(dd[&#39;police&#39;])</span>
-<span class="c1"># print(dd[&#39;forecast&#39;])  # police is most common and forecast is least common among the news headlines.</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;acute&#39;: 4.012261575505201, &#39;addie&#39;: 4.417726683613366, &#39;additive&#39;: 4.012261575505201, &#39;additiveweighting&#39;: 4.417726683613366, &#39;adm&#39;: 4.417726683613366, &#39;ahp&#39;: 4.417726683613366, &#39;akademik&#39;: 3.3191143949452564, &#39;aksesoris&#39;: 4.417726683613366, &#39;alat&#39;: 4.417726683613366, &#39;algoritma&#39;: 4.012261575505201, &#39;aliyah&#39;: 4.417726683613366, &#39;alphabet&#39;: 4.417726683613366, &#39;alphanumerik&#39;: 4.417726683613366, &#39;alumni&#39;: 4.417726683613366, &#39;anak&#39;: 4.012261575505201, &#39;analitycal&#39;: 4.417726683613366, &#39;analysis&#39;: 4.417726683613366, &#39;analytic&#39;: 4.417726683613366, &#39;analytical&#39;: 4.417726683613366, &#39;and&#39;: 4.417726683613366, &#39;android&#39;: 2.913649286837092, &#39;anggaran&#39;: 4.417726683613366, &#39;api&#39;: 4.417726683613366, &#39;aplikasi&#39;: 2.6259672143853106, &#39;arsip&#39;: 4.417726683613366, &#39;arsitektur&#39;: 4.417726683613366, &#39;asmaul&#39;: 4.012261575505201, &#39;asrama&#39;: 4.417726683613366, &#39;assosiation&#39;: 4.417726683613366, &#39;attribute&#39;: 4.417726683613366, &#39;bagun&#39;: 4.417726683613366, &#39;bahasa&#39;: 4.012261575505201, &#39;bangkalan&#39;: 3.031432322493475, &#39;bangun&#39;: 2.402823663071101, &#39;bank&#39;: 4.417726683613366, &#39;bantu&#39;: 4.417726683613366, &#39;batik&#39;: 3.7245795030534206, &#39;bayes&#39;: 3.7245795030534206, &#39;beasiswa&#39;: 3.7245795030534206, &#39;belajar&#39;: 4.417726683613366, &#39;berbasis&#39;: 2.11514159061932, &#39;berdasarkan&#39;: 4.417726683613366, &#39;berprestasi&#39;: 4.417726683613366, &#39;bidik&#39;: 4.417726683613366, &#39;bisnis&#39;: 4.417726683613366, &#39;cerdas&#39;: 4.417726683613366, &#39;chain&#39;: 4.417726683613366, &#39;chat&#39;: 4.417726683613366, &#39;choice&#39;: 4.417726683613366, &#39;citra&#39;: 4.012261575505201, &#39;classifier&#39;: 4.417726683613366, &#39;club&#39;: 4.417726683613366, &#39;cluster&#39;: 4.417726683613366, &#39;clustering&#39;: 4.012261575505201, &#39;code&#39;: 4.417726683613366, &#39;codeigniter&#39;: 4.012261575505201, &#39;coefficient&#39;: 4.417726683613366, &#39;computer&#39;: 4.417726683613366, &#39;correlation&#39;: 4.417726683613366, &#39;creative&#39;: 4.417726683613366, &#39;cumulative&#39;: 4.417726683613366, &#39;customer&#39;: 4.417726683613366, &#39;daerah&#39;: 4.417726683613366, &#39;dan&#39;: 4.012261575505201, &#39;darah&#39;: 4.012261575505201, &#39;dasar&#39;: 4.417726683613366, &#39;decision&#39;: 4.417726683613366, &#39;deket&#39;: 4.417726683613366, &#39;diabetic&#39;: 4.417726683613366, &#39;diagonal&#39;: 4.417726683613366, &#39;dinas&#39;: 4.012261575505201, &#39;direction&#39;: 4.417726683613366, &#39;discriminant&#39;: 4.417726683613366, &#39;distance&#39;: 4.012261575505201, &#39;dosen&#39;: 4.417726683613366, &#39;dr&#39;: 4.417726683613366, &#39;ebusiness&#39;: 4.417726683613366, &#39;edukasi&#39;: 3.7245795030534206, &#39;efektivitas&#39;: 4.417726683613366, &#39;egovernment&#39;: 4.417726683613366, &#39;elearning&#39;: 4.012261575505201, &#39;electre&#39;: 3.7245795030534206, &#39;elektronika&#39;: 4.417726683613366, &#39;elimination&#39;: 4.417726683613366, &#39;enhanced&#39;: 4.417726683613366, &#39;entropy&#39;: 4.012261575505201, &#39;euclidean&#39;: 4.417726683613366, &#39;evaluasi&#39;: 3.7245795030534206, &#39;exploiting&#39;: 4.417726683613366, &#39;exponential&#39;: 4.417726683613366, &#39;fahp&#39;: 4.012261575505201, &#39;fakultas&#39;: 4.012261575505201, &#39;fanp&#39;: 4.417726683613366, &#39;fase&#39;: 4.417726683613366, &#39;feature&#39;: 4.417726683613366, &#39;finite&#39;: 4.417726683613366, &#39;fitur&#39;: 4.417726683613366, &#39;formal&#39;: 4.417726683613366, &#39;framework&#39;: 3.7245795030534206, &#39;fundus&#39;: 4.417726683613366, &#39;fuzzy&#39;: 3.7245795030534206, &#39;gakin&#39;: 4.417726683613366, &#39;game&#39;: 3.3191143949452564, &#39;games&#39;: 4.417726683613366, &#39;geografis&#39;: 4.417726683613366, &#39;gerak&#39;: 4.417726683613366, &#39;gizi&#39;: 4.417726683613366, &#39;glrlm&#39;: 4.417726683613366, &#39;gps&#39;: 4.417726683613366, &#39;gray&#39;: 4.417726683613366, &#39;hanifida&#39;: 4.012261575505201, &#39;hierarchy&#39;: 4.417726683613366, &#39;hierarcy&#39;: 4.417726683613366, &#39;hijaiyah&#39;: 4.417726683613366, &#39;huruf&#39;: 3.7245795030534206, &#39;husna&#39;: 4.012261575505201, &#39;idb&#39;: 4.417726683613366, &#39;identifikasi&#39;: 4.417726683613366, &#39;idunn&#39;: 4.417726683613366, &#39;ii&#39;: 4.012261575505201, &#39;ilmu&#39;: 4.417726683613366, &#39;implementasi&#39;: 4.012261575505201, &#39;inap&#39;: 4.417726683613366, &#39;indonesia&#39;: 4.417726683613366, &#39;industri&#39;: 3.7245795030534206, &#39;informasi&#39;: 2.402823663071101, &#39;informatika&#39;: 3.7245795030534206, &#39;inggris&#39;: 4.417726683613366, &#39;integrasi&#39;: 4.012261575505201, &#39;intelligent&#39;: 4.417726683613366, &#39;interaktif&#39;: 4.417726683613366, &#39;jamu&#39;: 4.417726683613366, &#39;jawa&#39;: 4.417726683613366, &#39;jenjang&#39;: 4.417726683613366, &#39;kabupaten&#39;: 3.3191143949452564, &#39;kamus&#39;: 4.417726683613366, &#39;karakter&#39;: 4.417726683613366, &#39;karyawan&#39;: 4.417726683613366, &#39;keanggotaan&#39;: 4.417726683613366, &#39;kecamatan&#39;: 4.012261575505201, &#39;kegiatan&#39;: 4.417726683613366, &#39;kejuruan&#39;: 4.417726683613366, &#39;kelas&#39;: 4.417726683613366, &#39;kelayakan&#39;: 4.417726683613366, &#39;keliling&#39;: 4.417726683613366, &#39;kendaraan&#39;: 4.417726683613366, &#39;keputusan&#39;: 2.5459245067117746, &#39;kerugian&#39;: 4.417726683613366, &#39;kesehatan&#39;: 4.417726683613366, &#39;kesesuaian&#39;: 4.417726683613366, &#39;kinect&#39;: 4.417726683613366, &#39;kinerja&#39;: 4.012261575505201, &#39;klasifikasi&#39;: 3.501435951739211, &#39;kmeans&#39;: 4.012261575505201, &#39;kmedoid&#39;: 4.417726683613366, &#39;knearest&#39;: 4.417726683613366, &#39;kompetensi&#39;: 4.417726683613366, &#39;komponen&#39;: 4.417726683613366, &#39;konsep&#39;: 4.417726683613366, &#39;koperasi&#39;: 4.417726683613366, &#39;kota&#39;: 4.417726683613366, &#39;kreatif&#39;: 4.417726683613366, &#39;kredit&#39;: 4.012261575505201, &#39;kuliah&#39;: 4.417726683613366, &#39;lahan&#39;: 4.417726683613366, &#39;lamongan&#39;: 4.012261575505201, &#39;lda&#39;: 4.417726683613366, &#39;length&#39;: 4.417726683613366, &#39;leukemia&#39;: 4.012261575505201, &#39;level&#39;: 4.417726683613366, &#39;linear&#39;: 4.417726683613366, &#39;logistik&#39;: 4.417726683613366, &#39;lokasi&#39;: 4.012261575505201, &#39;lppm&#39;: 4.417726683613366, &#39;ltsa&#39;: 4.417726683613366, &#39;lunak&#39;: 4.417726683613366, &#39;lymphoblastic&#39;: 4.012261575505201, &#39;machine&#39;: 4.417726683613366, &#39;madrasah&#39;: 4.417726683613366, &#39;madura&#39;: 2.7129785913749407, &#39;maduraberdasarkanindikator&#39;: 4.417726683613366, &#39;mahalanobis&#39;: 4.012261575505201, &#39;mahasiswa&#39;: 3.7245795030534206, &#39;makanan&#39;: 4.417726683613366, &#39;man&#39;: 4.417726683613366, &#39;manajemen&#39;: 4.012261575505201, &#39;manejemen&#39;: 4.417726683613366, &#39;martodirdjo&#39;: 4.417726683613366, &#39;masyarakat&#39;: 4.417726683613366, &#39;matrix&#39;: 4.417726683613366, &#39;maze&#39;: 4.417726683613366, &#39;mdf&#39;: 4.417726683613366, &#39;media&#39;: 4.417726683613366, &#39;menemukan&#39;: 4.417726683613366, &#39;menengah&#39;: 3.7245795030534206, &#39;menentukan&#39;: 4.417726683613366, &#39;menggunakan&#39;: 4.012261575505201, &#39;menghafal&#39;: 4.012261575505201, &#39;mengunakan&#39;: 4.417726683613366, &#39;menilai&#39;: 4.417726683613366, &#39;menulis&#39;: 4.417726683613366, &#39;metho&#39;: 4.417726683613366, &#39;metode&#39;: 1.9753796482441615, &#39;microsoft&#39;: 4.417726683613366, &#39;mikroskopis&#39;: 4.417726683613366, &#39;mining&#39;: 4.417726683613366, &#39;misi&#39;: 4.417726683613366, &#39;mlearning&#39;: 4.417726683613366, &#39;mobile&#39;: 3.7245795030534206, &#39;modified&#39;: 4.417726683613366, &#39;morfologi&#39;: 4.417726683613366, &#39;multy&#39;: 4.417726683613366, &#39;musahil&#39;: 4.417726683613366, &#39;mutu&#39;: 3.501435951739211, &#39;naive&#39;: 4.417726683613366, &#39;naïve&#39;: 4.012261575505201, &#39;negeri&#39;: 4.012261575505201, &#39;neighbor&#39;: 4.417726683613366, &#39;network&#39;: 4.417726683613366, &#39;nilai&#39;: 4.417726683613366, &#39;nomor&#39;: 4.417726683613366, &#39;obyek&#39;: 4.417726683613366, &#39;olahraga&#39;: 4.417726683613366, &#39;ordinal&#39;: 4.417726683613366, &#39;oreste&#39;: 4.417726683613366, &#39;organisasi&#39;: 4.417726683613366, &#39;pamekasan&#39;: 4.417726683613366, &#39;pasien&#39;: 4.417726683613366, &#39;pawiyatan&#39;: 4.417726683613366, &#39;pekerja&#39;: 4.417726683613366, &#39;pemanfaatan&#39;: 4.417726683613366, &#39;pembelajaran&#39;: 3.031432322493475, &#39;pemberian&#39;: 4.417726683613366, &#39;pembuatan&#39;: 3.501435951739211, &#39;pemerataan&#39;: 4.417726683613366, &#39;pemesanan&#39;: 4.417726683613366, &#39;pemetaan&#39;: 4.012261575505201, &#39;pemilihan&#39;: 3.7245795030534206, &#39;pencarian&#39;: 4.417726683613366, &#39;pendataan&#39;: 4.417726683613366, &#39;pendidikan&#39;: 4.012261575505201, &#39;pendukung&#39;: 2.6259672143853106, &#39;penentuan&#39;: 3.3191143949452564, &#39;penerapan&#39;: 4.417726683613366, &#39;penerima&#39;: 4.417726683613366, &#39;penerimaan&#39;: 4.417726683613366, &#39;pengajuan&#39;: 4.012261575505201, &#39;pengambilan&#39;: 4.417726683613366, &#39;pengelolaan&#39;: 4.417726683613366, &#39;pengelompokan&#39;: 3.7245795030534206, &#39;pengenalan&#39;: 3.164963715117998, &#39;penggunaan&#39;: 4.417726683613366, &#39;pengolahan&#39;: 4.417726683613366, &#39;penilaian&#39;: 3.7245795030534206, &#39;penjaminan&#39;: 4.417726683613366, &#39;penjualan&#39;: 4.417726683613366, &#39;penyakit&#39;: 4.417726683613366, &#39;peramalan&#39;: 4.417726683613366, &#39;perancangan&#39;: 3.031432322493475, &#39;perangkat&#39;: 4.417726683613366, &#39;perbandingan&#39;: 4.417726683613366, &#39;perdagangan&#39;: 4.012261575505201, &#39;perindustrian&#39;: 4.417726683613366, &#39;pertanian&#39;: 4.417726683613366, &#39;pgri&#39;: 4.417726683613366, &#39;phonics&#39;: 4.417726683613366, &#39;plat&#39;: 4.417726683613366, &#39;platform&#39;: 4.417726683613366, &#39;pola&#39;: 4.417726683613366, &#39;prasekolah&#39;: 4.417726683613366, &#39;process&#39;: 3.7245795030534206, &#39;produk&#39;: 4.012261575505201, &#39;program&#39;: 3.501435951739211, &#39;proses&#39;: 3.7245795030534206, &#39;pulau&#39;: 4.417726683613366, &#39;puskesmas&#39;: 4.417726683613366, &#39;putih&#39;: 4.417726683613366, &#39;rancang&#39;: 2.3382851419335298, &#39;ranks&#39;: 4.417726683613366, &#39;rapor&#39;: 4.417726683613366, &#39;rating&#39;: 4.012261575505201, &#39;rawat&#39;: 4.417726683613366, &#39;real&#39;: 4.417726683613366, &#39;realety&#39;: 4.417726683613366, &#39;regresi&#39;: 4.417726683613366, &#39;rekomendasi&#39;: 4.012261575505201, &#39;resiko&#39;: 4.417726683613366, &#39;retinopathy&#39;: 4.417726683613366, &#39;rsud&#39;: 4.417726683613366, &#39;rule&#39;: 4.417726683613366, &#39;run&#39;: 4.417726683613366, &#39;runner&#39;: 4.417726683613366, &#39;rute&#39;: 4.417726683613366, &#39;saw&#39;: 3.501435951739211, &#39;sawah&#39;: 4.417726683613366, &#39;scale&#39;: 4.417726683613366, &#39;sdk&#39;: 4.417726683613366, &#39;segmentasi&#39;: 4.417726683613366, &#39;sekolah&#39;: 4.012261575505201, &#39;sel&#39;: 4.012261575505201, &#39;service&#39;: 4.417726683613366, &#39;simple&#39;: 3.501435951739211, &#39;sistem&#39;: 1.709676482511156, &#39;siswa&#39;: 4.012261575505201, &#39;slamet&#39;: 4.417726683613366, &#39;smarter&#39;: 4.417726683613366, &#39;smk&#39;: 4.417726683613366, &#39;smoothing&#39;: 4.417726683613366, &#39;smp&#39;: 4.417726683613366, &#39;soccer&#39;: 4.417726683613366, &#39;som&#39;: 4.417726683613366, &#39;speech&#39;: 4.417726683613366, &#39;spg&#39;: 4.417726683613366, &#39;state&#39;: 4.417726683613366, &#39;status&#39;: 4.417726683613366, &#39;stkip&#39;: 4.417726683613366, &#39;strategy&#39;: 4.417726683613366, &#39;studi&#39;: 2.220502106277147, &#39;sub&#39;: 4.417726683613366, &#39;surabaya&#39;: 4.012261575505201, &#39;tajwid&#39;: 4.417726683613366, &#39;tambak&#39;: 4.417726683613366, &#39;tanaman&#39;: 4.417726683613366, &#39;tanda&#39;: 4.417726683613366, &#39;tangan&#39;: 4.012261575505201, &#39;technique&#39;: 4.417726683613366, &#39;teknik&#39;: 3.3191143949452564, &#39;teknologi&#39;: 4.417726683613366, &#39;terpendek&#39;: 4.417726683613366, &#39;tes&#39;: 4.417726683613366, &#39;time&#39;: 4.417726683613366, &#39;timur&#39;: 4.417726683613366, &#39;tingkat&#39;: 4.012261575505201, &#39;toefl&#39;: 4.417726683613366, &#39;togaf&#39;: 4.417726683613366, &#39;toko&#39;: 4.417726683613366, &#39;topsis&#39;: 3.7245795030534206, &#39;tracking&#39;: 4.417726683613366, &#39;translation&#39;: 4.417726683613366, &#39;tree&#39;: 4.417726683613366, &#39;trend&#39;: 4.417726683613366, &#39;trunojoyo&#39;: 3.031432322493475, &#39;tulisan&#39;: 4.417726683613366, &#39;ukm&#39;: 4.012261575505201, &#39;unggulan&#39;: 4.012261575505201, &#39;unit&#39;: 4.012261575505201, &#39;unityd&#39;: 4.417726683613366, &#39;universitas&#39;: 3.031432322493475, &#39;usaha&#39;: 4.417726683613366, &#39;usia&#39;: 4.417726683613366, &#39;utm&#39;: 4.417726683613366, &#39;validation&#39;: 4.417726683613366, &#39;voting&#39;: 4.417726683613366, &#39;wafa&#39;: 4.417726683613366, &#39;wajah&#39;: 4.417726683613366, &#39;web&#39;: 3.164963715117998, &#39;weight&#39;: 4.417726683613366, &#39;weighting&#39;: 4.417726683613366}
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can therefore see that on the basis of the <strong>idf value</strong> , <strong>‘police’</strong> is the <strong>most frequent</strong> word while <strong>‘forecast’</strong> is <strong>least frequently</strong> occuring among the news.</p>
 </section>
 <section id="topic-modelling">
 <h2>TOPIC MODELLING<a class="headerlink" href="#topic-modelling" title="Permalink to this headline">#</a></h2>
-</section>
-</section>
 <section id="latent-semantic-analysis-lsa">
-<h1>Latent Semantic Analysis (LSA)<a class="headerlink" href="#latent-semantic-analysis-lsa" title="Permalink to this headline">#</a></h1>
-<p>The first approach that I have used is the LSA. <strong>LSA is basically singular value decomposition.</strong></p>
+<h3>Latent Semantic Analysis (LSA)<a class="headerlink" href="#latent-semantic-analysis-lsa" title="Permalink to this headline">#</a></h3>
+<p>Latent Semantic Analysis (LSA) merupakan sebuah metode yang memanfaatkan model statistik matematis untuk menganalisa struktur semantik suatu teks. LSA bisa digunakan untuk menilai judul tugas akhir dengan mengkonversikan judul tugas akhir menjadi matriks-matriks yang diberi nilai pada masing-masing term untuk dicari kesamaan dengan term. Secara umum, langkah-langkah LSA dalam penilaian judul tugas akhir adalah sebagai berikut:</p>
+<ol class="simple">
+<li><p>Text Processing</p></li>
+<li><p>Document-Term Matrix</p></li>
+<li><p>Singular Value Decomposition (SVD)</p></li>
+<li><p>Cosine Similarity Measurement</p></li>
+</ol>
+<section id="singular-value-decomposition">
+<h4>Singular Value Decomposition<a class="headerlink" href="#singular-value-decomposition" title="Permalink to this headline">#</a></h4>
+<p>Singular Value Decomposition (SVD) adalah sebuah teknik untuk mereduksi dimensi yang bermanfaat untuk memperkecil nilai kompleksitas dalam pemrosesan Document-Term Matrix. SVD merupakan teorema aljabar linier yang menyebutkan bahwa persegi panjang dari Document-Term Matrix dapat dipecah/didekomposisikan menjadi tiga matriks, yaitu Matriks ortogonal U, Matriks diagonal S, Transpose dari matriks ortogonal V.</p>
 <div class="math notranslate nohighlight">
 \[
 A_{mn} = U_{mm} \times S_{mn} \times V^{T}_{nn}
 \]</div>
-<p><span class="math notranslate nohighlight">\( A_{mn} = \)</span> matriks awal</p>
-<p><strong>SVD decomposes the original DTM into three matrices S=U.(sigma).(V.T). Here the matrix U denotes the document-topic matrix while (V) is the topic-term matrix.</strong></p>
-<p><strong>Each row of the matrix U(document-term matrix) is the vector representation of the corresponding document. The length of these vectors is the number of desired topics. Vector representation for the terms in our data can be found in the matrix V (term-topic matrix).</strong></p>
-<p>So, SVD gives us vectors for every document and term in our data. The length of each vector would be k. <strong>We can then use these vectors to find similar words and similar documents using the cosine similarity method.</strong></p>
-<p>We can use the truncatedSVD function to implement LSA. The n_components parameter is the number of topics we wish to extract.
-The model is then fit and transformed on the result given by vectorizer.</p>
-<p><strong>Lastly note that LSA and LSI (I for indexing) are the same and the later is just sometimes used in information retrieval contexts.</strong></p>
+<p><span class="math notranslate nohighlight">\( A_{mn} \)</span> : matriks awal</p>
+<p><span class="math notranslate nohighlight">\( U_{mm} \)</span> : matriks ortogonal</p>
+<p><span class="math notranslate nohighlight">\( S_{mn} \)</span> : matriks diagonal</p>
+<p><span class="math notranslate nohighlight">\( V^{T}_{nn} \)</span> : Transpose matriks ortogonal V</p>
+<p>Setiap baris dari matriks <span class="math notranslate nohighlight">\( U \)</span> (Document-Term Matrix) adalah bentuk vektor dari dokumen. Panjang dari vektor-vektor tersebut adalah jumlah topik. Sedangkan matriks <span class="math notranslate nohighlight">\( V \)</span> (Term-Topic Matrix) berisi kata-kata dari data.</p>
+<p>SVD akan memberikan vektor untuk setiap dokumen dan kata dalam data. Kita dapat menggunakan vektor-vektor tersebut untuk mencari kata dan dokumen serupa menggunakan metode <strong>Cosine Similarity</strong>.</p>
+<p>Dalam mengimplementasikan LSA, dapat menggunakan fungsi TruncatedSVD. parameter n_components digunakan untuk menentukan jumlah topik yang akan diekstrak.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
-<span class="n">lsa_model</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;randomized&#39;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">lsa_model</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;randomized&#39;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="n">lsa_top</span><span class="o">=</span><span class="n">lsa_model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">vect_text</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">lsa_top</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lsa_top</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (no_of_doc*no_of_topics)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.38109966e-02 -3.38227981e-02 -6.19923591e-02  1.35177626e-01
-   1.86651034e-01 -7.37217742e-02 -2.08458316e-02  6.29112652e-02
-  -2.74505698e-02 -2.94924294e-02]
- [ 1.84506430e-01  1.47775126e-01 -8.44861187e-02 -2.93837332e-01
-   2.47242004e-01  2.10864972e-02  2.89890965e-01  4.86196311e-02
-  -8.46031270e-02  1.42473638e-01]
- [ 3.04563509e-01 -3.14111186e-01 -2.03553473e-01  3.89676159e-02
-   2.71222177e-02 -3.06659009e-02 -6.65120704e-02 -7.23866036e-02
-   1.37710793e-01 -9.02117180e-02]
- [ 1.33461305e-01  3.54878355e-01 -2.23197350e-01 -2.57260907e-02
-   1.33956996e-02 -1.30637287e-01 -1.40952884e-01  7.14587496e-04
-   9.30709873e-02  3.64560250e-01]
- [ 1.23050240e-01  1.69169255e-01 -5.01909484e-02  4.06970159e-02
-  -1.09294205e-02  1.64037694e-01 -4.55145610e-02 -6.23694313e-02
-  -1.23654634e-02 -1.50486572e-01]
- [ 3.22168193e-01 -7.91053342e-02 -1.68617428e-01 -3.65897321e-01
-   2.83731704e-01  9.96580879e-03  1.33083504e-01 -1.94429618e-01
-   1.28975625e-01 -3.77712080e-02]
- [ 1.90912030e-01  2.91420525e-01 -2.04504862e-01  8.28863851e-02
-  -1.58174890e-01 -3.41605668e-02 -2.18774431e-02 -2.93800101e-02
-  -4.12262507e-02  1.08463126e-01]
- [ 8.25483309e-02  4.88788519e-02 -6.09295304e-02 -6.19697913e-03
-  -9.08757861e-03  4.74390269e-02  3.09261278e-01 -4.36482673e-02
-  -4.42506155e-02 -3.03178599e-01]
- [ 1.74672115e-02  6.67275823e-03 -5.10786873e-02  2.22722996e-02
-  -6.49224147e-02  1.27674286e-01  1.80526322e-01  3.15048576e-01
-   4.04149586e-01  1.87458656e-01]
- [ 5.28670241e-02 -5.50570465e-02 -5.18975094e-02 -1.49009210e-02
-  -9.65692690e-02  7.99297011e-02  8.25126781e-02  2.85018368e-01
-   2.53431366e-01 -6.03148904e-02]
- [ 1.46611649e-01 -8.56350085e-02 -2.74243849e-01  5.62291250e-01
-   5.01876104e-01 -8.91932509e-02  2.57650731e-02  1.83735274e-01
-  -6.37048886e-02 -7.89718404e-02]
- [ 1.36515275e-01  2.57053694e-01 -1.55605118e-01 -1.18556560e-01
-   8.33122845e-02 -4.91146073e-02 -9.50719959e-02 -8.86640390e-02
-   1.11634442e-01 -2.89131741e-02]
- [ 1.42085973e-01 -1.65182100e-01 -1.48100458e-01  1.32225746e-01
-  -2.25123661e-01 -1.29425580e-02  1.51488441e-01 -6.04260341e-02
-  -1.32036284e-01  1.42354047e-01]
- [ 1.08831684e-01 -1.48009289e-01 -1.26938210e-01  9.04695697e-02
-  -4.72935226e-02 -2.11654679e-02  1.09981360e-01  1.70919396e-02
-  -1.58113448e-02 -4.82042041e-02]
- [ 1.11776341e-01  2.56539806e-01 -1.59096940e-01  1.83634660e-02
-  -3.37399891e-02  1.59121528e-02 -1.42971729e-01 -1.83148111e-02
-   1.77450611e-02 -8.53387720e-02]
- [ 2.33018035e-01  1.25485542e-01 -2.24276171e-02 -2.04714581e-01
-   2.41522176e-01  1.87732531e-02  3.45203633e-01 -2.37418525e-01
-   5.00292254e-02  4.17821649e-02]
- [ 1.54995170e-02  3.64517508e-02 -6.99073476e-02  1.18251200e-01
-   7.90034167e-02  1.46912643e-01  3.61936573e-02  1.64149923e-01
-   3.28074632e-02  1.27044121e-01]
- [ 1.88188366e-02  1.28992294e-03  1.29704457e-02 -2.09303610e-02
-   2.30832415e-02  7.85357797e-03  5.03265817e-02 -1.72600069e-02
-  -2.18217492e-02 -4.58642823e-02]
- [ 2.15233787e-01  4.01621440e-01 -1.80454091e-01 -1.17854180e-01
-   1.35832022e-01 -7.54557131e-02  1.10536519e-01 -7.26645385e-02
-   1.86723709e-01  4.12455667e-01]
- [ 7.15656163e-02 -3.59806962e-02 -8.92014805e-02 -2.44444557e-02
-  -1.33666094e-01  1.15895945e-01  2.67188941e-01  4.17054175e-01
-   9.81980903e-02  7.19277356e-02]
- [ 4.14298619e-01 -3.72560573e-01 -2.20825239e-01  5.03497683e-02
-  -2.65625966e-01 -9.97272951e-03  1.97334681e-02 -2.08604855e-01
-   3.34581489e-02  1.74473439e-01]
- [ 5.97872163e-02 -6.18381697e-02 -5.81055558e-02 -1.64673007e-02
-  -1.05011875e-01  8.94259214e-02  9.19697823e-02  3.16752047e-01
-   2.82473070e-01 -7.97116636e-02]
- [ 1.64958953e-01  3.83043440e-01 -3.09636979e-01  9.65184337e-02
-  -8.07384549e-02 -3.40993277e-02  3.43563704e-02  1.64202444e-01
-  -1.94765148e-01  1.81803913e-02]
- [ 1.20599320e-01 -1.93287032e-01 -2.26633895e-01  3.05840499e-01
-   3.35563700e-01 -1.53958587e-01 -5.32367271e-02  3.69578578e-03
-   1.90408544e-02  2.11785831e-02]
- [ 7.90876660e-02  8.05395662e-02  6.49240221e-03  5.09746448e-02
-  -1.43076938e-02  2.03038552e-02  9.65307120e-02 -1.52965871e-02
-   8.40051317e-03  9.11248535e-02]
- [ 3.61220001e-02  1.19817600e-02 -5.36016007e-02 -1.18096709e-01
-   1.46184100e-01  1.57949063e-03  2.18837451e-01 -1.74309277e-01
-   1.13418444e-01 -1.69522962e-01]
- [ 2.75048249e-01 -3.59484748e-01 -3.86017784e-01  4.13569936e-01
-   4.02024968e-01 -1.46736724e-01 -3.26780603e-02  1.28820626e-01
-  -1.53654129e-03 -8.09068053e-02]
- [ 5.62512538e-01 -5.94381000e-02  1.61820665e-01 -1.31922110e-01
-   1.05183746e-01 -1.97817056e-02 -2.03545626e-01 -3.73483713e-02
-   1.21798022e-01  9.90737439e-02]
- [ 1.44754620e-01  3.16379578e-01 -2.54342280e-01  3.50576828e-02
-  -2.33637848e-02 -5.20165157e-02 -5.95441009e-02  4.82088086e-02
-  -1.44401385e-01 -2.42259215e-02]
- [ 6.25278226e-01  1.91955846e-01  5.07916364e-01  2.69091833e-01
-  -2.61150670e-02 -1.25489840e-02  1.31605095e-01 -4.81786396e-02
-   2.44954605e-02 -1.48925066e-01]
- [ 4.26202478e-01 -1.83742114e-01 -1.64115367e-01 -3.32249778e-01
-   1.26555584e-02  5.26199684e-02 -2.61130148e-01  2.36770563e-01
-  -1.35655511e-01 -1.07907693e-01]
- [ 9.20305578e-02  1.10020946e-01 -5.86116736e-02 -1.99401154e-01
-   2.38676868e-01  5.38785327e-03  3.33452902e-01 -2.14894513e-01
-   7.81847924e-02 -1.00701745e-01]
- [ 1.99891907e-01  1.12982276e-01  2.18377481e-03 -2.13026132e-01
-   1.79019211e-01  3.77612807e-02  2.72729938e-01  1.23308627e-01
-  -1.57374244e-01  1.24890773e-01]
- [ 3.76584399e-01 -1.23825300e-01 -7.99454614e-02 -2.38861906e-01
-   1.32178667e-01  1.01111924e-02 -1.34241610e-01 -7.51828801e-02
-   8.35334979e-02 -1.52981104e-01]
- [ 6.06258361e-01  1.48804431e-01  5.37170305e-01  2.43433292e-01
-   2.55236718e-02 -1.01843861e-02  9.08736794e-02 -1.67818287e-02
-  -3.27333764e-03 -3.73328747e-03]
- [ 1.71901012e-01 -2.00077486e-01 -1.84131461e-01 -7.20921764e-02
-  -1.07524223e-01  7.16849844e-02 -2.31491047e-02  5.68128500e-02
-   4.47364834e-01 -1.27445827e-01]
- [ 2.05552745e-01  4.35293299e-01 -2.99362391e-01 -2.26592109e-03
-  -1.09685625e-01 -6.11460660e-02 -2.09320550e-01  5.41212068e-02
-  -5.89879860e-02 -6.84161306e-02]
- [ 4.87442199e-01 -1.93827829e-01 -5.32666412e-02 -2.93643472e-01
-   3.91730299e-02  6.40995120e-02 -1.32671557e-01  9.98987357e-02
-  -1.05827797e-01 -1.44601356e-01]
- [ 6.11553562e-01 -1.00191945e-01  2.85504927e-01 -7.85258923e-02
-   1.36395901e-02  2.33093743e-02 -1.59133855e-01  1.33726944e-01
-  -4.55609779e-02  1.32093751e-02]
- [ 4.67383273e-01  1.99573148e-02  3.09243098e-01 -2.42857900e-02
-  -4.78444704e-03  8.51423602e-03 -2.08058253e-01  2.18450314e-01
-  -2.80997182e-02  5.31216803e-02]
- [ 1.44668984e-01  3.61343877e-01 -2.26463559e-01  3.66218846e-02
-  -4.58556518e-02  6.50937943e-02 -1.99452510e-01 -5.14470487e-02
-   2.21815262e-02 -7.17697330e-02]
- [ 1.99382692e-01  3.34064379e-02  2.36498400e-02 -1.17445534e-01
-   4.08872724e-02  7.88158058e-03 -1.68350123e-01  1.75860999e-01
-  -1.15160734e-02 -1.43297793e-02]
- [ 3.45455977e-03 -3.92443051e-04 -2.09392285e-02  6.72604653e-02
-   8.44884434e-02  9.61057972e-02  3.69181031e-03  5.86269143e-02
-  -6.71988944e-03  2.90180548e-02]
- [ 3.39452109e-01  3.63729472e-01  1.86850741e-02  5.54795772e-02
-  -1.48821237e-02 -9.15581462e-02 -1.80673335e-01 -4.63811446e-02
-   1.48637893e-01  2.34592774e-01]
- [ 2.64808348e-02  1.71474436e-02 -1.03974023e-01  1.47397410e-01
-   1.50670099e-01 -9.50089877e-02  3.87971054e-03  8.61700966e-02
-  -8.15069377e-02  3.44574174e-02]
- [ 1.93214690e-01  7.27190977e-02 -1.64469654e-01  1.56039818e-01
-  -3.31115455e-01  4.95563314e-02  1.79460550e-01 -5.70973169e-02
-   7.77280650e-02 -3.80576026e-01]
- [ 2.37206289e-01  3.35599153e-01 -6.96552778e-02  7.38296205e-02
-  -4.76034402e-02 -4.56246890e-02  1.01088556e-01 -1.24381150e-01
-   7.31907778e-02 -3.69759653e-01]
- [ 1.74656449e-01 -4.34559281e-02 -1.41503300e-01  1.98611208e-01
-  -2.31665407e-01  4.74657435e-02  3.64448618e-01  2.65271154e-02
-  -1.52336964e-01  2.34084003e-01]
- [ 2.97752910e-01 -3.24500755e-02 -1.01245873e-01 -2.96013445e-01
-   9.48870315e-03  1.00744435e-01  1.14456947e-01  3.77795418e-01
-  -3.73914171e-01 -5.93631621e-02]
- [ 2.06900094e-01  4.81059233e-01 -2.71058366e-01  8.52040634e-02
-  -1.63397907e-01 -6.71376540e-02 -9.65599175e-02 -6.29049764e-02
-   9.75598594e-02 -2.10427483e-01]
- [ 2.46423128e-01 -2.82196190e-01 -2.24053709e-01 -5.84676902e-02
-  -2.03825937e-01  1.71203012e-02 -2.83066932e-02 -1.33749380e-01
-  -1.14349765e-01  1.12163656e-01]
- [ 1.41960381e-01  8.05527513e-02  7.58243639e-03 -1.88628263e-01
-   1.80704698e-01  1.06409836e-02  8.65708917e-02 -1.24642054e-02
-  -3.66173636e-02  1.72368930e-03]
- [ 7.15294335e-01  1.82381984e-02  4.77787333e-01  2.57521309e-01
-  -8.22062346e-02 -1.64299920e-02  1.33417025e-01 -3.36747221e-02
-  -4.60631288e-02  5.34318235e-02]
- [ 2.95247449e-01 -2.73817847e-01 -2.40683656e-01 -1.86347079e-01
-  -1.49817655e-01  5.27869437e-02 -3.43808190e-02 -4.51795532e-02
-  -1.25461497e-01 -3.59421197e-02]
- [ 4.43926843e-01 -3.39344221e-01 -1.53904805e-01  1.46148366e-01
-  -1.11599759e-01 -5.68654692e-02 -1.09731658e-02 -2.98462233e-01
-   1.09267851e-01  1.67534654e-01]
- [ 3.52687888e-02  4.82255831e-02 -6.41206199e-02  6.09092502e-02
-  -5.88612907e-02  2.19423088e-01  1.04486568e-01  2.13059897e-01
-   3.76070754e-01 -1.21595732e-02]
- [ 9.58122237e-03  3.02113276e-02 -5.34197354e-02  1.65664463e-01
-   1.66278040e-01  8.05129066e-01 -1.08141980e-01 -1.21139460e-01
-  -5.03050622e-02  8.96793474e-02]
- [ 1.16437834e-01  1.06901798e-01 -1.90316563e-01  8.52187547e-02
-  -2.04524086e-01  3.07796633e-02  2.56688281e-01  7.35956630e-02
-  -3.30593678e-01 -2.09831192e-02]
- [ 3.22755179e-02  9.01732028e-02 -7.00243579e-02  1.52547964e-01
-   1.10719364e-01  7.97891910e-01 -1.26866244e-01 -1.88827833e-01
-  -8.87319506e-02  3.30129243e-02]
- [ 2.70467780e-01 -3.12084512e-01 -2.47451672e-01  1.88990081e-02
-  -2.45900131e-01  2.98966065e-03  3.23806983e-02 -1.58203833e-01
-  -6.87845773e-03  1.15131380e-01]]
-(60, 10)
 </pre></div>
 </div>
 </div>
@@ -1306,28 +1284,18 @@ The model is then fit and transformed on the result given by vectorizer.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="o">=</span><span class="n">lsa_top</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Document 0 :&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">topic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Topic &quot;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot; : &quot;</span><span class="p">,</span><span class="n">topic</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
-  
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Topic </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">topic</span><span class="o">*</span><span class="mi">100</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Document 0 :
-Topic  0  :  1.3810996566775882
-Topic  1  :  -3.382279805600065
-Topic  2  :  -6.199235908068523
-Topic  3  :  13.517762637196961
-Topic  4  :  18.665103434281917
-Topic  5  :  -7.372177416994005
-Topic  6  :  -2.084583160731114
-Topic  7  :  6.291126519436345
-Topic  8  :  -2.745056983009059
-Topic  9  :  -2.9492429358061147
+Topic 0 : 1.3810694835999033
+Topic 1 : -3.384805564095132
 </pre></div>
 </div>
 </div>
 </div>
-<p>Similalry for other documents we can do this. However note that values dont add to 1 as in LSA it is not probabiltiy of a topic in a document.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">lsa_model</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (no_of_topics*no_of_words)</span>
@@ -1336,26 +1304,192 @@ Topic  9  :  -2.9492429358061147
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10, 358)
-[[ 0.0025181   0.02305361  0.04967846 ...  0.14556037  0.04117895
-   0.01351984]
- [ 0.012148   -0.04450399  0.04827556 ... -0.10746507  0.02115073
-   0.03200339]
- [-0.01452618 -0.04031583  0.05116952 ... -0.06801329  0.06393252
-  -0.00759199]
- ...
- [-0.06100136 -0.04290008 -0.02982878 ...  0.16111838 -0.01006258
-  -0.02278058]
- [-0.02949872 -0.00253048  0.01779871 ... -0.2147123   0.0056077
-   0.01398968]
- [ 0.02781568  0.03480352 -0.09816177 ... -0.05842379 -0.03449213
-  -0.07358953]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 358)
+[[ 2.51819953e-03  2.30536559e-02  4.96783611e-02  1.66791646e-02
+   1.21478443e-02  1.06691713e-02  1.64312006e-01  4.60945596e-03
+   1.31382585e-02  2.57108543e-03  1.35197378e-02  1.16864700e-03
+   1.18886238e-02  3.90123454e-02  1.93272980e-02  1.06691713e-02
+   5.03942446e-03  9.68413088e-03  1.16187254e-02  1.06691713e-02
+   1.30638374e-01  3.40690009e-02  4.97201815e-03  1.70472104e-01
+   3.43759066e-02  1.21478443e-02  3.19848580e-02  4.54722012e-02
+   1.27042090e-02  4.53201912e-03  9.39182317e-03  6.32334607e-02
+   6.33490936e-02  2.66229229e-01  9.03513251e-03  1.31382585e-02
+   2.86381013e-02  1.82686484e-02  2.01923481e-02  1.18886238e-02
+   2.23859456e-01  2.08227246e-03  1.12586867e-02  1.06691713e-02
+   7.26258938e-03  7.26258938e-03  1.16864700e-03  1.92162911e-02
+   1.06691713e-02  2.51819953e-03  7.06590019e-03  1.33387377e-02
+   1.26908241e-03  1.07120829e-02  1.16864700e-03  7.28563194e-02
+   3.91336976e-03  1.33387377e-02  3.91336976e-03  1.33387377e-02
+   4.00740645e-02  1.27042090e-02  1.32799049e-02  1.31224437e-02
+   2.51819953e-03  1.69721137e-02  1.06697531e-02  1.42824296e-02
+   2.31881736e-04  5.03942446e-03  2.30939549e-02  2.66918320e-03
+   5.03942446e-03  3.05124278e-03  4.12065786e-02  7.06590019e-03
+   7.26258938e-03  3.76097541e-02  1.16516427e-02  1.21478443e-02
+   3.05627172e-02  2.96836182e-02  1.69721137e-02  1.06691713e-02
+   4.00740645e-02  3.27104063e-02  2.66918320e-03  1.13046142e-01
+   4.53201912e-03  4.60945596e-03  2.07776914e-02  1.11494978e-01
+   9.68413088e-03  2.31881736e-04  2.66918320e-03  1.03281613e-03
+   1.92162911e-02  2.80469683e-03  7.88783404e-02  2.31881736e-04
+   2.77838944e-02  1.66226332e-03  4.27976944e-02  4.97201815e-03
+   1.42824296e-02  1.03281613e-03  7.06590019e-03  2.31881736e-04
+   8.87719561e-03  2.31881736e-04  3.19848580e-02  1.16187254e-02
+   1.06691713e-02  1.31382585e-02  1.62540349e-02  3.19848580e-02
+   1.26908241e-03  2.08227246e-03  1.26908241e-03  2.22864055e-02
+   2.30536559e-02  1.61188045e-02  7.06590019e-03  4.55055917e-02
+   4.09275897e-02  2.54418337e-01  1.13046142e-01  9.39182317e-03
+   1.19781608e-02  7.26258938e-03  1.31382585e-02  1.40008761e-02
+   1.26908241e-03  1.66791646e-02  6.43312543e-02  4.55055917e-02
+   3.91336976e-03  1.12586867e-02  1.33387377e-02  1.70876324e-02
+   5.43634811e-02  2.40701443e-02  1.91557482e-02  1.25202856e-02
+   8.87719561e-03  3.91336976e-03  9.56016406e-02  9.68413088e-03
+   1.26908241e-03  1.42824296e-02  3.85989013e-03  5.71711019e-02
+   1.12834337e-02  1.07120829e-02  1.40008761e-02  1.16864700e-03
+   1.66791646e-02  1.69721137e-02  4.97201815e-03  1.32799049e-02
+   2.80469683e-03  1.33387377e-02  1.95770318e-02  9.50544783e-03
+   1.42824296e-02  2.50326251e-02  5.03942446e-03  2.31881736e-04
+   2.51819953e-03  2.31881736e-04  5.03942446e-03  9.03513251e-03
+   1.06097121e-02  9.50544783e-03  2.30536559e-02  1.35197378e-02
+   2.51819953e-03  1.03281613e-03  1.35197378e-02  2.52896976e-01
+   4.53201912e-03  2.51819953e-03  6.60753055e-02  1.92162911e-02
+   1.35197378e-02  5.88201372e-02  1.33387377e-02  7.06590019e-03
+   1.26908241e-03  2.31881736e-04  9.39182317e-03  2.66918320e-03
+   4.97201815e-03  8.87719561e-03  5.20664247e-02  1.35197378e-02
+   1.61078503e-02  3.19848580e-02  4.97201815e-03  1.25202856e-02
+   1.18886238e-02  4.53201912e-03  1.39129437e-01  4.97201815e-03
+   6.90407499e-04  1.27042090e-02  1.06691713e-02  2.30536559e-02
+   5.29727971e-02  2.66918320e-03  2.08227246e-03  4.53201912e-03
+   2.27361006e-02  1.39463007e-01  1.25202856e-02  8.30854063e-03
+   4.34997154e-02  1.16864700e-03  9.68413088e-03  2.40701443e-02
+   3.91336976e-03  3.91336976e-03  4.60945596e-03  9.03513251e-03
+   1.16187254e-02  1.33387377e-02  7.06590019e-03  7.06590019e-03
+   4.27394788e-02  1.03281613e-03  1.21478443e-02  1.71202255e-01
+   1.16187254e-02  2.89879895e-02  4.53201912e-03  1.92162911e-02
+   3.15317687e-02  3.98572303e-02  2.80469683e-03  3.90123454e-02
+   6.66334194e-03  9.32366857e-02  4.89774041e-02  1.35197378e-02
+   1.66226332e-03  1.06697531e-02  1.95770318e-02  9.03513251e-03
+   3.40690009e-02  1.66950210e-02  2.48847996e-02  1.40008761e-02
+   2.40701443e-02  3.45093889e-02  4.18749622e-02  9.21891192e-03
+   6.90407499e-04  4.60945596e-03  6.84370171e-02  1.35197378e-02
+   1.06691713e-02  2.30939549e-02  1.21478443e-02  3.19135621e-02
+   1.06697531e-02  4.97201815e-03  3.91336976e-03  1.92162911e-02
+   1.16864700e-03  1.18886238e-02  2.69555740e-02  1.62474504e-02
+   1.16989004e-01  1.13046142e-01  4.53201912e-03  8.87719561e-03
+   2.08227246e-03  2.64049513e-01  4.53201912e-03  2.40701443e-02
+   1.27490887e-02  7.06590019e-03  1.03281613e-03  1.06691713e-02
+   9.03513251e-03  3.21875486e-02  9.68413088e-03  2.31881736e-04
+   7.06590019e-03  1.27042090e-02  2.31881736e-04  1.92994507e-03
+   2.80469683e-03  7.17558164e-02  1.42824296e-02  9.50544783e-03
+   1.92994507e-03  3.91336976e-03  6.06777429e-02  2.51819953e-03
+   1.92162911e-02  6.01652282e-02  2.70313711e-01  2.96764844e-02
+   7.06590019e-03  4.53201912e-03  3.43759066e-02  4.60945596e-03
+   4.27394788e-02  4.60945596e-03  1.26908241e-03  4.97201815e-03
+   2.17420347e-02  1.03281613e-03  7.06590019e-03  1.06697531e-02
+   1.03281613e-03  2.98583387e-01  1.21478443e-02  7.00376279e-02
+   2.30536559e-02  1.42824296e-02  3.19135621e-02  2.66918320e-03
+   3.48558880e-03  4.53201912e-03  1.61511746e-01  1.40008761e-02
+   2.80469683e-03  3.03883878e-02  1.03281613e-03  1.26908241e-03
+   3.91842241e-02  3.03883878e-02  1.21478443e-02  4.60945596e-03
+   5.36496427e-02  8.87719561e-03  1.06691713e-02  1.06697531e-02
+   4.60945596e-03  2.00418350e-01  1.16864700e-03  2.09097976e-02
+   2.94586637e-02  6.14884149e-02  1.92994507e-03  2.00418350e-01
+   9.68413088e-03  1.18886238e-02  9.50544783e-03  1.26908241e-03
+   4.00740645e-02  1.31382585e-02  5.03942446e-03  1.45560411e-01
+   4.11789445e-02  1.35197378e-02]
+ [ 1.21519874e-02 -4.44989959e-02  4.82701524e-02  1.05018163e-02
+   1.62821896e-02  2.72505871e-02 -3.57369841e-05  7.86044542e-03
+  -5.46405556e-03  6.61218789e-03  3.19981723e-02  7.42038866e-04
+  -2.31175222e-02  2.77577136e-03 -4.38745095e-02  2.72505871e-02
+  -8.72615492e-03  3.54097254e-02  4.51354695e-02  2.72505871e-02
+  -1.63438537e-01 -6.20760933e-03 -4.18986106e-03 -1.41545269e-01
+  -1.89078497e-02  1.62821896e-02 -5.71329229e-02  8.15181797e-02
+   1.20617056e-02  4.48573505e-03 -2.51907917e-02 -9.28454919e-02
+   6.68677013e-02 -2.78722220e-01  3.46882468e-02 -5.46405556e-03
+   3.30487153e-02  6.60200000e-02  6.65410655e-02 -2.31175222e-02
+  -1.76863621e-01  9.73570878e-03  5.00926040e-02  2.72505871e-02
+   1.45206224e-02  1.45206224e-02  7.42038866e-04 -3.68074957e-02
+   2.72505871e-02  1.21519874e-02  1.62552154e-02  3.74287430e-03
+   1.45969868e-04  1.72619275e-02  7.42038866e-04 -2.44809670e-02
+  -6.82579237e-03  3.74287430e-03 -6.82579237e-03  3.74287430e-03
+   1.64569550e-02  1.20617056e-02  4.14704940e-02  3.83382078e-02
+   1.21519874e-02 -3.30597747e-02  3.36086177e-02  1.35186367e-02
+  -4.74792200e-05 -8.72615492e-03  5.24520618e-02  6.10049059e-03
+  -8.72615492e-03  8.85041460e-03 -2.97306991e-02  1.62552154e-02
+   1.45206224e-02 -7.42747738e-02 -1.13828452e-02  1.62821896e-02
+  -2.04875575e-02  1.00171660e-01 -3.30597747e-02  2.72505871e-02
+   1.64569550e-02  7.46824381e-02  6.10049059e-03  3.36091103e-02
+   4.48573505e-03  7.86044542e-03  8.64879083e-02 -1.83374943e-02
+   3.54097254e-02 -4.74792200e-05  6.10049059e-03 -4.23653908e-03
+  -3.68074957e-02  1.53932394e-03 -1.95700515e-02 -4.74792200e-05
+   5.83106853e-02  6.53835359e-03 -8.67336078e-02 -4.18986106e-03
+   1.35186367e-02 -4.23653908e-03  1.62552154e-02 -4.74792200e-05
+  -2.01938406e-02 -4.74792200e-05 -5.71329229e-02  4.51354695e-02
+   2.72505871e-02 -5.46405556e-03 -7.51359230e-03 -5.71329229e-02
+   1.45969868e-04  9.73570878e-03  1.45969868e-04  8.31593093e-02
+  -4.44989959e-02  2.17644586e-03  1.62552154e-02 -6.84596096e-02
+   6.84804156e-02 -1.25888609e-02  3.36091103e-02 -2.51907917e-02
+   4.73865341e-02  1.45206224e-02 -5.46405556e-03  1.26167793e-02
+   1.45969868e-04  1.05018163e-02  5.31700812e-02 -6.84596096e-02
+  -6.82579237e-03  5.00926040e-02  3.74287430e-03  1.63519054e-02
+  -9.61196234e-03 -3.73435658e-02  7.45136477e-02  5.23154498e-02
+  -2.01938406e-02 -6.82579237e-03  3.13656597e-01  3.54097254e-02
+   1.45969868e-04  1.35186367e-02  4.16529464e-03  4.29486273e-02
+  -9.88875946e-04  1.72619275e-02  1.26167793e-02  7.42038866e-04
+   1.05018163e-02 -3.30597747e-02 -4.18986106e-03  4.14704940e-02
+   1.53932394e-03  3.74287430e-03  7.90183761e-02  1.45943867e-02
+   1.35186367e-02  4.99421517e-02 -8.72615492e-03 -4.74792200e-05
+   1.21519874e-02 -4.74792200e-05 -8.72615492e-03  3.46882468e-02
+  -1.69423791e-02  1.45943867e-02 -4.44989959e-02  3.19981723e-02
+   1.21519874e-02 -4.23653908e-03  3.19981723e-02 -4.33419765e-02
+   4.48573505e-03  1.21519874e-02  2.33871606e-02 -3.68074957e-02
+   3.19981723e-02 -6.47950563e-02  3.74287430e-03  1.62552154e-02
+   1.45969868e-04 -4.74792200e-05 -2.51907917e-02  6.10049059e-03
+  -4.18986106e-03 -2.01938406e-02  1.96439615e-02  3.19981723e-02
+   4.52872611e-02 -5.71329229e-02 -4.18986106e-03  5.23154498e-02
+  -2.31175222e-02  4.48573505e-03  2.51955217e-01 -4.18986106e-03
+   3.64431593e-03  1.20617056e-02  2.72505871e-02 -4.44989959e-02
+  -1.04673010e-01  6.10049059e-03  9.73570878e-03  4.48573505e-03
+   4.07590898e-02  2.24941136e-02  5.23154498e-02  2.36054410e-02
+   1.18888746e-02  7.42038866e-04  3.54097254e-02 -3.73435658e-02
+  -6.82579237e-03 -6.82579237e-03  7.86044542e-03  3.46882468e-02
+   4.51354695e-02  3.74287430e-03  1.62552154e-02  1.62552154e-02
+  -2.84281637e-02 -4.23653908e-03  1.62821896e-02 -7.30495620e-02
+   4.51354695e-02  7.43531904e-02  4.48573505e-03 -3.68074957e-02
+  -1.05168364e-02  1.11560661e-01  1.53932394e-03  2.77577136e-03
+   5.47207068e-03  3.02898571e-01  1.30471307e-01  3.19981723e-02
+   6.53835359e-03  3.36086177e-02  7.90183761e-02  3.46882468e-02
+  -6.20760933e-03  1.45421741e-02 -3.29261512e-02  1.26167793e-02
+  -3.73435658e-02  1.07093493e-01 -1.14831943e-02  1.57208908e-02
+   3.64431593e-03  7.86044542e-03  5.05515797e-02  3.19981723e-02
+   2.72505871e-02  5.24520618e-02  1.62821896e-02 -1.31189550e-02
+   3.36086177e-02 -4.18986106e-03 -6.82579237e-03 -3.68074957e-02
+   7.42038866e-04 -2.31175222e-02  9.08824808e-02  4.48032771e-02
+   5.69569111e-02  3.36091103e-02  4.48573505e-03 -2.01938406e-02
+   9.73570878e-03 -2.84569280e-01  4.48573505e-03 -3.73435658e-02
+   1.73289216e-02  1.62552154e-02 -4.23653908e-03  2.72505871e-02
+   3.46882468e-02  4.79728293e-02  3.54097254e-02 -4.74792200e-05
+   1.62552154e-02  1.20617056e-02 -4.74792200e-05  2.08264732e-03
+   1.53932394e-03  1.09506797e-01  1.35186367e-02  1.45943867e-02
+   2.08264732e-03 -6.82579237e-03 -5.97351085e-02  1.21519874e-02
+  -3.68074957e-02  5.40035326e-02  2.17525570e-01  9.67360168e-02
+   1.62552154e-02  4.48573505e-03 -1.89078497e-02  7.86044542e-03
+  -2.84281637e-02  7.86044542e-03  1.45969868e-04 -4.18986106e-03
+   7.70195644e-02 -4.23653908e-03  1.62552154e-02  3.36086177e-02
+  -4.23653908e-03  1.05324297e-01  1.62821896e-02 -4.29914481e-02
+  -4.44989959e-02  1.35186367e-02 -1.31189550e-02  6.10049059e-03
+   6.21451257e-03  4.48573505e-03  2.34083186e-02  1.26167793e-02
+   1.53932394e-03 -5.24351682e-02 -4.23653908e-03  1.45969868e-04
+  -1.02966782e-02 -5.24351682e-02  1.62821896e-02  7.86044542e-03
+   1.62121384e-01 -2.01938406e-02  2.72505871e-02  3.36086177e-02
+   7.86044542e-03  4.27524941e-02  7.42038866e-04  3.55591196e-02
+   1.05338956e-01 -5.33041497e-03  2.08264732e-03  4.27524941e-02
+   3.54097254e-02 -2.31175222e-02  1.45943867e-02  1.45969868e-04
+   1.64569550e-02 -5.46405556e-03 -8.72615492e-03 -1.07464064e-01
+   2.11499927e-02  3.19981723e-02]]
 </pre></div>
 </div>
 </div>
 </div>
-<section id="now-e-can-get-a-list-of-the-important-words-for-each-of-the-10-topics-as-shown-for-simplicity-here-i-have-shown-10-words-for-each-topic">
-<h2>Now e can get a list of the important words for each of the 10 topics as shown. For simplicity here I have shown 10 words for each topic.<a class="headerlink" href="#now-e-can-get-a-list-of-the-important-words-for-each-of-the-10-topics-as-shown-for-simplicity-here-i-have-shown-10-words-for-each-topic" title="Permalink to this headline">#</a></h2>
+<p>Sekarang kita dapat mendapatkan daftar kata yang penting untuk setiap topik. Jumlah kata yang akan ditampilkan hanya 10. Untuk melakukan sorting dapat menggunakan fungsi sorted, lalu slicing dengan menambahkan [:10] agar data yang diambil hanya 10 data pertama. Slicing dilakukan berdasarkan nilai pada indeks 1 karena nilai dari nilai lsa.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># most important words for each topic</span>
@@ -1363,10 +1497,11 @@ Topic  9  :  -2.9492429358061147
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">comp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lsa_model</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
     <span class="n">vocab_comp</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vocab</span><span class="p">,</span> <span class="n">comp</span><span class="p">)</span>
+
     <span class="n">sorted_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">vocab_comp</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Topic &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;: &quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">sorted_words</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Topic </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sorted_words</span> <span class="p">]))</span>
+    
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
          
 </pre></div>
@@ -1374,42 +1509,20 @@ Topic  9  :  -2.9492429358061147
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 0: 
-studi sistem bangun rancang informasi madura berbasis trunojoyo universitas pembelajaran 
+studi sistem bangun rancang informasi madura berbasis trunojoyo universitas pembelajaran
+
 
 Topic 1: 
-keputusan pendukung metode sistem topsis penentuan pemilihan saw penilaian unggulan 
-
-Topic 2: 
-studi trunojoyo universitas teknik mutu akademik evaluasi informatika proses program 
-
-Topic 3: 
-game pembelajaran edukasi asmaul hanifida husna menghafal metode android klasifikasi 
-
-Topic 4: 
-game edukasi asmaul hanifida husna menghafal bangkalan kabupaten informasi klasifikasi 
-
-Topic 5: 
-acute citra darah leukemia lymphoblastic mahalanobis sel distance mikroskopis penyakit 
-
-Topic 6: 
-perancangan bangkalan industri kabupaten aplikasi huruf batik clustering kmeans android 
-
-Topic 7: 
-pengenalan perancangan berbasis web framework huruf anggaran pengelolaan codeigniter algoritma 
-
-Topic 8: 
-pengenalan tangan elearning dasar elektronika komponen dan bangun rancang direction 
-
-Topic 9: 
-pemilihan electre ii madura android entropy aplikasi dan kabupaten dinas 
+keputusan pendukung metode sistem topsis penentuan pemilihan saw penilaian unggulan
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 </section>
+</section>
 <section id="latent-dirichlet-allocation-lda">
-<h1>Latent Dirichlet Allocation (LDA)<a class="headerlink" href="#latent-dirichlet-allocation-lda" title="Permalink to this headline">#</a></h1>
+<h2>Latent Dirichlet Allocation (LDA)<a class="headerlink" href="#latent-dirichlet-allocation-lda" title="Permalink to this headline">#</a></h2>
 <p>LDA is the most popular technique.<strong>The topics then generate words based on their probability distribution. Given a dataset of documents, LDA backtracks and tries to figure out what topics would create those documents in the first place.</strong></p>
 <p><strong>To understand the maths it seems as if knowledge of Dirichlet distribution (distribution of distributions) is required which is quite intricate and left fior now.</strong></p>
 <p>To get an inituitive explanation of LDA checkout these blogs: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2016/08/beginners-guide-to-topic-modeling-in-python/">this</a>  ,  <a class="reference external" href="https://tedunderwood.com/2012/04/07/topic-modeling-made-just-simple-enough/">this</a>  ,<a class="reference external" href="https://en.wikipedia.org/wiki/Topic_model">this</a>  ,  <a class="reference external" href="https://www.kaggle.com/arthurtok/spooky-nlp-and-topic-modelling-tutorial">this kernel on Kaggle</a>  ,  <a class="reference external" href="http://blog.echen.me/2011/08/22/introduction-to-latent-dirichlet-allocation/">this</a> .</p>
@@ -1572,13 +1685,13 @@ pemilihan electre ii madura android entropy aplikasi dan kabupaten dinas
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9999999999999999
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
 </pre></div>
 </div>
 </div>
 </div>
 <section id="note-that-the-values-in-a-particular-row-adds-to-1-this-is-beacuse-each-value-denotes-the-of-contribution-of-the-corressponding-topic-in-the-document">
-<h2>Note that the values in a particular row adds to 1. This is beacuse each value denotes the % of contribution of the corressponding topic in the document.<a class="headerlink" href="#note-that-the-values-in-a-particular-row-adds-to-1-this-is-beacuse-each-value-denotes-the-of-contribution-of-the-corressponding-topic-in-the-document" title="Permalink to this headline">#</a></h2>
+<h3>Note that the values in a particular row adds to 1. This is beacuse each value denotes the % of contribution of the corressponding topic in the document.<a class="headerlink" href="#note-that-the-values-in-a-particular-row-adds-to-1-this-is-beacuse-each-value-denotes-the-of-contribution-of-the-corressponding-topic-in-the-document" title="Permalink to this headline">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 w_{i,j} = tf_{i,j} * log( {{N} \over {df_{j}}} )
@@ -1594,23 +1707,23 @@ w_{i,j} = tf_{i,j} * log( {{N} \over {df_{j}}} )
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Document 0: 
-Topic  0 :  2.5067645560588434 %
+Topic  0 :  2.506764556058844 %
 Topic  1 :  2.5068028792686063 %
-Topic  2 :  77.4386107396141 %
-Topic  3 :  2.506773071935772 %
-Topic  4 :  2.506771320042686 %
-Topic  5 :  2.506748361582033 %
-Topic  6 :  2.5071348263653084 %
-Topic  7 :  2.506833690079205 %
-Topic  8 :  2.506822139303076 %
-Topic  9 :  2.5067384157503714 %
+Topic  2 :  77.43861073961409 %
+Topic  3 :  2.506773071935773 %
+Topic  4 :  2.5067713200426867 %
+Topic  5 :  2.506748361582034 %
+Topic  6 :  2.5071348263653093 %
+Topic  7 :  2.506833690079206 %
+Topic  8 :  2.5068221393030763 %
+Topic  9 :  2.506738415750372 %
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="as-we-can-see-topic-7-8-are-dominantly-present-in-document-0">
-<h2>As we can see Topic 7 &amp; 8 are dominantly present in document 0.<a class="headerlink" href="#as-we-can-see-topic-7-8-are-dominantly-present-in-document-0" title="Permalink to this headline">#</a></h2>
+<h3>As we can see Topic 7 &amp; 8 are dominantly present in document 0.<a class="headerlink" href="#as-we-can-see-topic-7-8-are-dominantly-present-in-document-0" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">lda_model</span><span class="o">.</span><span class="n">components_</span><span class="p">)</span>
@@ -1633,7 +1746,7 @@ Topic  9 :  2.5067384157503714 %
 </div>
 </section>
 <section id="most-important-words-for-a-topic-say-10-this-time">
-<h2>Most important words for a topic. (say 10 this time.)<a class="headerlink" href="#most-important-words-for-a-topic-say-10-this-time" title="Permalink to this headline">#</a></h2>
+<h3>Most important words for a topic. (say 10 this time.)<a class="headerlink" href="#most-important-words-for-a-topic-say-10-this-time" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># most important words for each topic</span>
@@ -1685,7 +1798,7 @@ linear man coefficient media slamet metode pemerataan tulisan putih mdf
 </div>
 </section>
 <section id="to-better-visualize-words-in-a-topic-we-can-see-the-word-cloud-for-each-topic-top-50-words-are-plotted">
-<h2>To better visualize words in a topic we can see the word cloud. For each topic top 50 words are plotted.<a class="headerlink" href="#to-better-visualize-words-in-a-topic-we-can-see-the-word-cloud-for-each-topic-top-50-words-are-plotted" title="Permalink to this headline">#</a></h2>
+<h3>To better visualize words in a topic we can see the word cloud. For each topic top 50 words are plotted.<a class="headerlink" href="#to-better-visualize-words-in-a-topic-we-can-see-the-word-cloud-for-each-topic-top-50-words-are-plotted" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
@@ -1717,7 +1830,7 @@ linear man coefficient media slamet metode pemerataan tulisan putih mdf
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/topic-modelling-using-lda-and-lsa-in-sklearn_59_0.png" src="_images/topic-modelling-using-lda-and-lsa-in-sklearn_59_0.png" />
+<img alt="_images/topic-modelling-using-lda-and-lsa-in-sklearn_65_0.png" src="_images/topic-modelling-using-lda-and-lsa-in-sklearn_65_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1728,16 +1841,11 @@ linear man coefficient media slamet metode pemerataan tulisan putih mdf
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/topic-modelling-using-lda-and-lsa-in-sklearn_60_0.png" src="_images/topic-modelling-using-lda-and-lsa-in-sklearn_60_0.png" />
+<img alt="_images/topic-modelling-using-lda-and-lsa-in-sklearn_66_0.png" src="_images/topic-modelling-using-lda-and-lsa-in-sklearn_66_0.png" />
 </div>
 </div>
 </section>
 </section>
-<section id="the-end">
-<h1>THE END !!!<a class="headerlink" href="#the-end" title="Permalink to this headline">#</a></h1>
-</section>
-<section id="please-star-upvote-in-case-u-liked-it">
-<h1>[Please star/upvote in case u liked it. ]<a class="headerlink" href="#please-star-upvote-in-case-u-liked-it" title="Permalink to this headline">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">

@@ -1,9 +1,28 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# ## Topic Modelling using Latent Semantic Analysis (LSA) and Latent Dirichlet Allocation (LDA) in sklearn
+# # Topic Modelling using Latent Semantic Analysis (LSA) and Latent Dirichlet Allocation (LDA) in sklearn
 
-# #### IMPORTING MODULES
+# ## Import Library
+# 
+# ### Library yang digunakan
+# 
+# - **Pandas**
+# 
+#     Untuk manipulasi dan membaca data dalam bentuk tabel 
+# 
+# - **matplotlib**
+# 
+#     Untuk membuat visualisasi data
+# 
+# <!-- - **seaborn** -->
+# - **PySastrawi**
+# 
+#     Untuk melakukan text processing
+# 
+# - **scikit-learn**
+# 
+#     Untuk menghitung TF dan TF-IDF
 
 # In[1]:
 
@@ -13,14 +32,14 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import style
-import seaborn as sns
+# import seaborn as sns
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 
 #configure
 # sets matplotlib to inline and displays graphs below the corressponding cell.
 get_ipython().run_line_magic('matplotlib', 'inline')
 style.use('fivethirtyeight')
-sns.set(style='whitegrid',color_codes=True)
+# sns.set(style='whitegrid',color_codes=True)
 
 import re
 import string
@@ -40,45 +59,50 @@ import string
 # from nltk import ne_chunk
 
 # vectorizers for creating the document-term-matrix (DTM)
-from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+# from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
 
 #stop-words
 # stop_words=set(nltk.corpus.stopwords.words('english'))
 
 
-# #### LOADING THE DATASET
-
 # In[2]:
 
 
-df=pd.read_csv('./dataset_PTA.csv')
+# Melakukan setting jumlah kolom maksimal pada output
+pd.options.display.max_columns = 10
 
+
+# ## Membaca Data
 
 # In[3]:
 
 
-df.head()
+df = pd.read_csv('dataset_pta.csv')
 
-
-# We will drop the **'publish_date'** column as it is useless for our discussion.
 
 # In[4]:
 
 
-# drop the publish date.
-# df.drop(['Abstraksi', 'Bidang Minat'],axis=1,inplace=True)
-df = df[['judul']]
+df.head()
 
+
+# Data yang digunakan dalam program ini hanya data pada kolom 'judul'. Untuk mengambil kolom 'judul' saja dapat dilakukan dengan inisialisasi ulang df dengan df[['judul']] 
 
 # In[5]:
 
 
+df = df[['judul']]
 df.head()
 
 
-# #### DATA CLEANING & PRE-PROCESSING
+# ## Pre-processing Data
 
-# Here I have done the data pre-processing. I have used the lemmatizer and can also use the stemmer. Also the stop words have been used along with the words wit lenght shorter than 3 characters to reduce some stray words.
+# Terdapat beberapa tahapan dalam melakukan Pre-processing data, diantaranya *case folding* (Mengubah teks menjadi *lower case*), menghapus angka dan tanda baca, menghapus white space dan *stopword removal*. Semua tahapan *pre-processing* tersebut saya masukkan ke dalam fungsi clean_text, kemudian saya aplikasikan pada data judul pada dataframe dengan method **.apply(clean_text)**. 
+# 
+# Untuk menghapus stopword saya menggunakan library **PySastrawi**, karena **PySastrawi** memiliki list stopword bahasa indonesia yang lebih lengkap daripada library **nltk**.
+# 
+# Pada Library **PySastrawi** penghapusan stopword dilakukan dengan membuata objek StopWordRemoverFactory, kemudian buat objek stopword remover dengan method create_stop_word_remover. Objek stopword remover memiliki method remove yang dapat digunakan untuk menghapus stopword dalam sebuah kalimat dengan memasukkan string ke dalam parameter method remove.  
 
 # In[6]:
 
@@ -112,15 +136,15 @@ def clean_text(text):
 df['cleaned_judul'] = df['judul'].apply(clean_text)
 
 
+# ### Perbedaan data awal dengan data yang telah di-preprocessing
+
 # In[9]:
 
 
 df.head()
 
 
-# Can see the difference after removal of stopwords and some shorter words. aslo the words have been lemmatized as in **'calls'--->'call'.**
-
-# Now drop the unpre-processed column.
+# ### Hapus kolom 'judul'
 
 # In[10]:
 
@@ -128,161 +152,187 @@ df.head()
 df.drop(['judul'],axis=1,inplace=True)
 
 
+# ### Mengganti nama kolom __cleaned_judul__ dengan __judul__ 
+
 # In[11]:
+
+
+df.columns = ['judul']
+
+
+# In[12]:
 
 
 df.head()
 
 
-# We can also see any particular news headline.
-
-# In[12]:
-
-
-df['cleaned_judul'][0]
-
-
-# #### EXTRACTING THE FEATURES AND CREATING THE DOCUMENT-TERM-MATRIX ( DTM )
-# 
-# In DTM the values are the TFidf values.
-# 
-# Also I have specified some parameters of the Tfidf vectorizer.
-# 
-# Some important points:-
-# 
-# **1) LSA is generally implemented with Tfidf values everywhere and not with the Count Vectorizer.**
-# 
-# **2) max_features depends on your computing power and also on eval. metric (coherence score is a metric for topic model). Try the value that gives best eval. metric and doesn't limits processing power.**
-# 
-# **3) Default values for min_df & max_df worked well.**
-# 
-# **4) Can try different values for ngram_range.**
+# ### Contoh judul yang telah di lakukan *pre-processing*
 
 # In[13]:
 
 
-vect =TfidfVectorizer(stop_words=stop_words,max_features=1000) # to play with. min_df,max_df,max_features etc...
+df['judul'][0]
 
 
-# In[59]:
+# ## Ekstraksi fitur dan membuat Document Term Matrix (DTM)
+# 
+# Dalam perhitungan LSA (Latent Semantic Analysis) data yang diperlukan hanya TF-IDF. Sehingga pada program ini tidak perlu mencari nilai TF dari dokumen. Untuk mengetahui nilai TF-IDF dapat dilakukan dengan membuat objek dari kelas TfidfVectorizer yang disediakan library scikit-learn.
+# 
+# Rumus Term Frequency:
+# $$
+# tf(t,d) = { f_{ t,d } \over \sum_{t' \in d } f_{t,d}}
+# $$
+# 
+# $ f_{ t,d } \quad\quad\quad\quad$: Jumlah kata t muncul dalam dokumen
+# 
+# $ \sum_{t' \in d } f_{t,d} \quad\quad$: Jumlah seluruh kata yang ada dalam dokumen
+# 
+# Rumus Inverse Document Frequency:
+# $$
+# idf( t,D ) = log { N \over { | \{ d \in D:t \in d \} | } }
+# $$
+# 
+# $ N \quad\quad\quad\quad\quad$ : Jumlah seluruh dokumen
+# 
+# $ | \{ d \in D:t \in d \} | $ : Jumlah dokumen yang mengandung kata $ t $
+# 
+# Rumus Inverse Document Frequency:
+# $$
+# tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
+# $$
+
+# In[14]:
 
 
-vect =TfidfVectorizer() # to play with. min_df,max_df,max_features etc...
+vect = TfidfVectorizer()
 
 
-# In[60]:
+# Setelah objek **TfidfVectorizer** dibuat gunakan method **fit_transform** dengan argumen data yang akan dicari nilai **TF-IDF**-nya
+
+# In[15]:
 
 
-vect_text=vect.fit_transform(df['cleaned_judul'])
+vect_text = vect.fit_transform(df['judul'])
 
 
-# In[61]:
+# In[16]:
 
 
-vect.get_feature_names_out().shape
+attr_count = vect.get_feature_names_out().shape[0]
+print(f'Jumlah atribut dalam Document-Term Matrix : {attr_count}')
 
 
-# #### We can now see the most frequent and rare words in the news headlines based on idf score. The lesser the value; more common is the word in the news headlines.
+# #### Menyimpan hasil tfidf ke dalam DataFrame
 
-# In[62]:
-
-
-print(vect_text.shape)
-print(vect_text)
-
-
-# In[63]:
-
-
-idf=vect.idf_
-
-
-# In[65]:
-
-
-dd=dict(zip(vect.get_feature_names_out(), idf))
-l=sorted(dd, key=(dd).get)
-# # print(l)
-# print(l[0],l[-1])
-# print(dd['police'])
-# print(dd['forecast'])  # police is most common and forecast is least common among the news headlines.
-
-
-# In[67]:
-
-
-print(dd)
-
-
-# We can therefore see that on the basis of the **idf value** , **'police'** is the **most frequent** word while **'forecast'** is **least frequently** occuring among the news.
-
-# ### TOPIC MODELLING
+# Hasil tfidf perlu diubah terlebih dahulu menjadi array agar dapat digunakan sebagai data. Kemudian untuk parameter kolom-nya dapat didapatkan menggunakan method get_feature_names_out pada objek TfidfVectorizer.
 
 # In[17]:
 
 
+tfidf = pd.DataFrame(
+    data=vect_text.toarray(),
+    columns=vect.get_feature_names_out()
+)
+tfidf.head()
 
 
+# Mencari nilai **idf** dengan mengakses atribut **idf_** pada objek **tfidfVectorizer**. Atribut **idf_** hanya terdefinisi apabila parameter **use_idf** saat instansiasi objekk tfidfVectorizer bernilai **True**. Namun, **use_idf** sudah bernilai **True** secara default, sehingga kita dapat perlu menentukannya secara manual. 
 
-# ## Latent Semantic Analysis (LSA)
+# In[18]:
 
-# The first approach that I have used is the LSA. **LSA is basically singular value decomposition.**
+
+idf = vect.idf_
+
+
+# In[19]:
+
+
+dd= dict(zip(vect.get_feature_names_out(), idf))
+
+l = sorted(dd, key = dd.get)
+
+
+# Kita dapat melihat kata yang paling sering dan paling jarang muncul pada judul tugas akhir berdasarkan nilai idf. Kata yang memiliki nilai lebih kecil, adalah kata yang paling sering muncul dalam judul
+
+# In[20]:
+
+
+print("5 Kata paling sering muncul:")
+for i, word in enumerate(l[:5]):
+    print(f"{i+1}. {word}\t(Nilai idf: {dd[word]})")
+
+
+# In[21]:
+
+
+print("5 Kata paling jarang muncul:")
+for i, word in enumerate(l[:-5:-1]):
+    print(f"{i+1}. {word}\t(Nilai idf: {dd[word]})")
+
+
+# ## TOPIC MODELLING
+
+# ### Latent Semantic Analysis (LSA)
+
+# Latent Semantic Analysis (LSA) merupakan sebuah metode yang memanfaatkan model statistik matematis untuk menganalisa struktur semantik suatu teks. LSA bisa digunakan untuk menilai judul tugas akhir dengan mengkonversikan judul tugas akhir menjadi matriks-matriks yang diberi nilai pada masing-masing term untuk dicari kesamaan dengan term. Secara umum, langkah-langkah LSA dalam penilaian judul tugas akhir adalah sebagai berikut:
 # 
+# 1. Text Processing
+# 2. Document-Term Matrix
+# 3. Singular Value Decomposition (SVD)
+# 4. Cosine Similarity Measurement
+
+# #### Singular Value Decomposition
+
+# Singular Value Decomposition (SVD) adalah sebuah teknik untuk mereduksi dimensi yang bermanfaat untuk memperkecil nilai kompleksitas dalam pemrosesan Document-Term Matrix. SVD merupakan teorema aljabar linier yang menyebutkan bahwa persegi panjang dari Document-Term Matrix dapat dipecah/didekomposisikan menjadi tiga matriks, yaitu Matriks ortogonal U, Matriks diagonal S, Transpose dari matriks ortogonal V.
+
 # $$
 # A_{mn} = U_{mm} \times S_{mn} \times V^{T}_{nn}
 # $$
 # 
-# $ A_{mn} = $ matriks awal
+# $ A_{mn} $ : matriks awal
 # 
-# **SVD decomposes the original DTM into three matrices S=U.(sigma).(V.T). Here the matrix U denotes the document-topic matrix while (V) is the topic-term matrix.**
+# $ U_{mm} $ : matriks ortogonal
 # 
-# **Each row of the matrix U(document-term matrix) is the vector representation of the corresponding document. The length of these vectors is the number of desired topics. Vector representation for the terms in our data can be found in the matrix V (term-topic matrix).**
+# $ S_{mn} $ : matriks diagonal
 # 
-# So, SVD gives us vectors for every document and term in our data. The length of each vector would be k. **We can then use these vectors to find similar words and similar documents using the cosine similarity method.**
-# 
-# We can use the truncatedSVD function to implement LSA. The n_components parameter is the number of topics we wish to extract.
-# The model is then fit and transformed on the result given by vectorizer. 
-# 
-# **Lastly note that LSA and LSI (I for indexing) are the same and the later is just sometimes used in information retrieval contexts.**
+# $ V^{T}_{nn} $ : Transpose matriks ortogonal V
 
-# In[68]:
+# Setiap baris dari matriks $ U $ (Document-Term Matrix) adalah bentuk vektor dari dokumen. Panjang dari vektor-vektor tersebut adalah jumlah topik. Sedangkan matriks $ V $ (Term-Topic Matrix) berisi kata-kata dari data.
+# 
+# SVD akan memberikan vektor untuk setiap dokumen dan kata dalam data. Kita dapat menggunakan vektor-vektor tersebut untuk mencari kata dan dokumen serupa menggunakan metode **Cosine Similarity**.
+# 
+# Dalam mengimplementasikan LSA, dapat menggunakan fungsi TruncatedSVD. parameter n_components digunakan untuk menentukan jumlah topik yang akan diekstrak.
+# 
+# 
+
+# In[22]:
 
 
 from sklearn.decomposition import TruncatedSVD
-lsa_model = TruncatedSVD(n_components=10, algorithm='randomized', n_iter=10, random_state=42)
+lsa_model = TruncatedSVD(n_components=2, algorithm='randomized', n_iter=10, random_state=42)
 
 lsa_top=lsa_model.fit_transform(vect_text)
 
 
-# In[69]:
-
-
-print(lsa_top)
-print(lsa_top.shape)  # (no_of_doc*no_of_topics)
-
-
-# In[85]:
+# In[23]:
 
 
 l=lsa_top[0]
 print("Document 0 :")
 for i,topic in enumerate(l):
-  print("Topic ",i," : ",topic*100)
-  
+  print(f"Topic {i} : {topic*100}")
 
 
-# Similalry for other documents we can do this. However note that values dont add to 1 as in LSA it is not probabiltiy of a topic in a document.
-
-# In[86]:
+# In[24]:
 
 
 print(lsa_model.components_.shape) # (no_of_topics*no_of_words)
 print(lsa_model.components_)
 
 
-# #### Now e can get a list of the important words for each of the 10 topics as shown. For simplicity here I have shown 10 words for each topic.
+# Sekarang kita dapat mendapatkan daftar kata yang penting untuk setiap topik. Jumlah kata yang akan ditampilkan hanya 10. Untuk melakukan sorting dapat menggunakan fungsi sorted, lalu slicing dengan menambahkan \[:10\] agar data yang diambil hanya 10 data pertama. Slicing dilakukan berdasarkan nilai pada indeks 1 karena nilai dari nilai lsa.
 
-# In[88]:
+# In[25]:
 
 
 # most important words for each topic
@@ -290,10 +340,11 @@ vocab = vect.get_feature_names_out()
 
 for i, comp in enumerate(lsa_model.components_):
     vocab_comp = zip(vocab, comp)
+
     sorted_words = sorted(vocab_comp, key= lambda x:x[1], reverse=True)[:10]
-    print("Topic "+str(i)+": ")
-    for t in sorted_words:
-        print(t[0],end=" ")
+    print(f"Topic {i}: ")
+    print(" ".join([ item[0] for item in sorted_words ]))
+    
     print("\n")
          
 
@@ -306,7 +357,7 @@ for i, comp in enumerate(lsa_model.components_):
 # 
 # To get an inituitive explanation of LDA checkout these blogs: [this](https://www.analyticsvidhya.com/blog/2016/08/beginners-guide-to-topic-modeling-in-python/)  ,  [this](https://tedunderwood.com/2012/04/07/topic-modeling-made-just-simple-enough/)  ,[this](https://en.wikipedia.org/wiki/Topic_model)  ,  [this kernel on Kaggle](https://www.kaggle.com/arthurtok/spooky-nlp-and-topic-modelling-tutorial)  ,  [this](http://blog.echen.me/2011/08/22/introduction-to-latent-dirichlet-allocation/) .
 
-# In[89]:
+# In[26]:
 
 
 from sklearn.decomposition import LatentDirichletAllocation
@@ -314,20 +365,20 @@ lda_model=LatentDirichletAllocation(n_components=10,learning_method='online',ran
 # n_components is the number of topics
 
 
-# In[90]:
+# In[27]:
 
 
 lda_top=lda_model.fit_transform(vect_text)
 
 
-# In[91]:
+# In[28]:
 
 
 print(lda_top.shape)  # (no_of_doc,no_of_topics)
 print(lda_top)
 
 
-# In[25]:
+# In[29]:
 
 
 sum=0
@@ -342,7 +393,7 @@ print(sum)
 # w_{i,j} = tf_{i,j} * log( {{N} \over {df_{j}}} )
 # $$
 
-# In[92]:
+# In[30]:
 
 
 # composition of doc 0 for eg
@@ -355,7 +406,7 @@ for i,topic in enumerate(lda_top[0]):
 # 
 #  
 
-# In[93]:
+# In[31]:
 
 
 print(lda_model.components_)
@@ -364,7 +415,7 @@ print(lda_model.components_.shape)  # (no_of_topics*no_of_words)
 
 # #### Most important words for a topic. (say 10 this time.)
 
-# In[95]:
+# In[32]:
 
 
 # most important words for each topic
@@ -379,7 +430,7 @@ for i, comp in enumerate(lda_model.components_):
     print("\n")
 
 
-# In[29]:
+# In[ ]:
 
 
 
@@ -387,7 +438,7 @@ for i, comp in enumerate(lda_model.components_):
 
 # #### To better visualize words in a topic we can see the word cloud. For each topic top 50 words are plotted.
 
-# In[96]:
+# In[33]:
 
 
 from wordcloud import WordCloud
@@ -409,32 +460,16 @@ def draw_word_cloud(index):
  
 
 
-# In[97]:
+# In[34]:
 
 
 # topic 0
 draw_word_cloud(0)
 
 
-# In[98]:
+# In[35]:
 
 
 # topic 1
 draw_word_cloud(1)  # ...
-
-
-# In[32]:
-
-
-
-
-
-# ## THE END !!!
-
-# ## [Please star/upvote in case u liked it. ]
-
-# In[32]:
-
-
-
 
