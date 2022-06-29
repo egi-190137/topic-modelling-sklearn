@@ -184,7 +184,7 @@ df['judul'][0]
 # 
 # $ | \{ d \in D:t \in d \} | $ : Jumlah dokumen yang mengandung kata $ t $
 # 
-# Rumus Inverse Document Frequency:
+# Rumus TFIDF:
 # 
 # $$
 # tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
@@ -381,7 +381,7 @@ lda_model = LatentDirichletAllocation(n_components=2,learning_method='online',ra
 lda_top = lda_model.fit_transform(vect_text)
 
 
-# In[28]:
+# In[1]:
 
 
 (count_doc_lda, count_topic_lda) = lda_top.shape
@@ -389,7 +389,7 @@ print(f"Jumlah dokumen\t: {count_doc_lda}")
 print(f"Jumlah topik\t: {count_topic_lda}")
 
 
-# In[29]:
+# In[30]:
 
 
 # composition of doc 0 for eg
@@ -400,7 +400,7 @@ for i,topic in enumerate(lda_top[0]):
 
 # Seperti yang dapat dilihat pada program di atas bahwa Topic 1 lebih dominan daripada topik 0 pada document 0.
 
-# In[30]:
+# In[59]:
 
 
 (count_topic_lda, count_word_lda) = lda_model.components_.shape
@@ -410,7 +410,7 @@ print(f"Jumlah kata\t: {count_word_lda}")
 
 # #### 10 kata paling penting untuk suatu topik
 
-# In[31]:
+# In[49]:
 
 
 vocab = vect.get_feature_names_out()
@@ -421,7 +421,7 @@ def get_important_words(comp, n):
     return " ".join([t[0] for t in sorted_words])
 
 
-# In[32]:
+# In[50]:
 
 
 for i, comp in enumerate(lda_model.components_):
@@ -432,7 +432,7 @@ for i, comp in enumerate(lda_model.components_):
 
 # #### Visualisasi 50 kata penting menggunakan wordcloud
 
-# In[33]:
+# In[54]:
 
 
 # Generate a word cloud image for given topic
@@ -448,13 +448,13 @@ def draw_word_cloud(index):
  
 
 
-# In[34]:
+# In[55]:
 
 
 draw_word_cloud(0)
 
 
-# In[35]:
+# In[56]:
 
 
 draw_word_cloud(1)
