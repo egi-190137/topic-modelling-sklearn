@@ -57,7 +57,9 @@ pd.options.display.max_columns = 10
 
 # ## Membaca Data
 
-# Dataset yang digunakan : [file](https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/detail_pta.csv)
+# Dataset yang digunakan : [link](https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/dataset_pta.csv)
+# 
+# Dataset yang digunakan merupakan hasil dari crawling judul dan abstraksi jurnal yang telah ditambah nilai kolom bidang minat dan dihapus duplikasi data-nya.
 
 # In[3]:
 
