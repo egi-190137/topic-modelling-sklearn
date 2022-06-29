@@ -1,69 +1,51 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Topic Modelling using Latent Semantic Analysis (LSA) and Latent Dirichlet Allocation (LDA) in sklearn
+# # Topic Modelling dengan LSA dan LDA
 
 # ## Import Library
 # 
 # ### Library yang digunakan
 # 
-# - **Pandas**
+# - **Pandas**\
+#     Untuk manipulasi dan membaca data dalam bentuk tabel. 
 # 
-#     Untuk manipulasi dan membaca data dalam bentuk tabel 
+# - **matplotlib**\
+#     Untuk membuat visualisasi data.
 # 
-# - **matplotlib**
+# - **PySastrawi**\
+#     Untuk melakukan text processing.
 # 
-#     Untuk membuat visualisasi data
+# - **scikit-learn**\
+#     Untuk menghitung TF dan TF-IDF.
 # 
-# <!-- - **seaborn** -->
-# - **PySastrawi**
-# 
-#     Untuk melakukan text processing
-# 
-# - **scikit-learn**
-# 
-#     Untuk menghitung TF dan TF-IDF
+# - **WordCloud**\
+#     Untuk visualisasi kata yang paling sering muncul. 
 
 # In[1]:
 
 
-# data visualisation and manipulation
+# visualisasi data dan manipulasi
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import style
-# import seaborn as sns
-from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
+from wordcloud import WordCloud
 
 #configure
 # sets matplotlib to inline and displays graphs below the corressponding cell.
 get_ipython().run_line_magic('matplotlib', 'inline')
 style.use('fivethirtyeight')
-# sns.set(style='whitegrid',color_codes=True)
 
+# Pre-processing
 import re
 import string
-#import nltk
-# import nltk
-# from nltk.corpus import stopwords
-# from nltk.tokenize import word_tokenize,sent_tokenize
-
-# #preprocessing
-# from nltk.corpus import stopwords  #stopwords
-# from nltk import word_tokenize,sent_tokenize # tokenizing
-# from nltk.stem import PorterStemmer,LancasterStemmer  # using the Porter Stemmer and Lancaster Stemmer and others
-# from nltk.stem.snowball import SnowballStemmer
-# from nltk.stem import WordNetLemmatizer  # lammatizer from WordNet
-
-# # for named entity recognition (NER)
-# from nltk import ne_chunk
+from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 
 # vectorizers for creating the document-term-matrix (DTM)
 from sklearn.feature_extraction.text import TfidfVectorizer
-# from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
-
-#stop-words
-# stop_words=set(nltk.corpus.stopwords.words('english'))
+from sklearn.decomposition import TruncatedSVD
+from sklearn.decomposition import LatentDirichletAllocation
 
 
 # In[2]:
@@ -74,6 +56,8 @@ pd.options.display.max_columns = 10
 
 
 # ## Membaca Data
+
+# Dataset yang digunakan : [file](./dataset_pta.csv)
 
 # In[3]:
 
@@ -179,6 +163,7 @@ df['judul'][0]
 # Dalam perhitungan LSA (Latent Semantic Analysis) data yang diperlukan hanya TF-IDF. Sehingga pada program ini tidak perlu mencari nilai TF dari dokumen. Untuk mengetahui nilai TF-IDF dapat dilakukan dengan membuat objek dari kelas TfidfVectorizer yang disediakan library scikit-learn.
 # 
 # Rumus Term Frequency:
+# 
 # $$
 # tf(t,d) = { f_{ t,d } \over \sum_{t' \in d } f_{t,d}}
 # $$
@@ -188,6 +173,7 @@ df['judul'][0]
 # $ \sum_{t' \in d } f_{t,d} \quad\quad$: Jumlah seluruh kata yang ada dalam dokumen
 # 
 # Rumus Inverse Document Frequency:
+# 
 # $$
 # idf( t,D ) = log { N \over { | \{ d \in D:t \in d \} | } }
 # $$
@@ -197,6 +183,7 @@ df['judul'][0]
 # $ | \{ d \in D:t \in d \} | $ : Jumlah dokumen yang mengandung kata $ t $
 # 
 # Rumus Inverse Document Frequency:
+# 
 # $$
 # tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
 # $$
@@ -308,7 +295,6 @@ for i, word in enumerate(l[:-5:-1]):
 # In[22]:
 
 
-from sklearn.decomposition import TruncatedSVD
 lsa_model = TruncatedSVD(n_components=2, algorithm='randomized', n_iter=10, random_state=42)
 
 lsa_top=lsa_model.fit_transform(vect_text)
@@ -326,8 +312,9 @@ for i,topic in enumerate(l):
 # In[24]:
 
 
-print(lsa_model.components_.shape) # (no_of_topics*no_of_words)
-print(lsa_model.components_)
+(count_topic, count_word) = lsa_model.components_.shape
+print(f"Jumlah topik\t: {count_topic}")
+print(f"Jumlah kata\t: {count_word}")
 
 
 # Sekarang kita dapat mendapatkan daftar kata yang penting untuk setiap topik. Jumlah kata yang akan ditampilkan hanya 10. Untuk melakukan sorting dapat menggunakan fungsi sorted, lalu slicing dengan menambahkan \[:10\] agar data yang diambil hanya 10 data pertama. Slicing dilakukan berdasarkan nilai pada indeks 1 karena nilai dari nilai lsa.
@@ -344,56 +331,63 @@ for i, comp in enumerate(lsa_model.components_):
     sorted_words = sorted(vocab_comp, key= lambda x:x[1], reverse=True)[:10]
     print(f"Topic {i}: ")
     print(" ".join([ item[0] for item in sorted_words ]))
-    
-    print("\n")
+    print("")
          
 
 
-# ## Latent Dirichlet Allocation (LDA)  
+# ### Latent Dirichlet Allocation (LDA)  
 
-# LDA is the most popular technique.**The topics then generate words based on their probability distribution. Given a dataset of documents, LDA backtracks and tries to figure out what topics would create those documents in the first place.**
+# ![Model LDA](img/dw-1.jpg)
 # 
-# **To understand the maths it seems as if knowledge of Dirichlet distribution (distribution of distributions) is required which is quite intricate and left fior now.**
+# *Latent Dirichlet Allocation (LDA)* adalah model generatif statistik yang dari koleksi data diskrit seperti kumpulan dokumen (*corpus*).
 # 
-# To get an inituitive explanation of LDA checkout these blogs: [this](https://www.analyticsvidhya.com/blog/2016/08/beginners-guide-to-topic-modeling-in-python/)  ,  [this](https://tedunderwood.com/2012/04/07/topic-modeling-made-just-simple-enough/)  ,[this](https://en.wikipedia.org/wiki/Topic_model)  ,  [this kernel on Kaggle](https://www.kaggle.com/arthurtok/spooky-nlp-and-topic-modelling-tutorial)  ,  [this](http://blog.echen.me/2011/08/22/introduction-to-latent-dirichlet-allocation/) .
+# ![Konsep LDA](img/dw-3.jpg)
+# 
+# Awal dibuatnya LDA yaitu bahwa dokumen terdiri dari beberapa topik.  Proses mengasumsikan bahwa dokumen berasal dari topik tertentu melalui *imaginary random process*. Setiap topik dibentuk oleh distribusi kata-kata.
+# 
+# ![Konsep LDA](img/dw-4.jpg)
+# 
+# Topik yang mendeskripsikan kumpulan dari suatu dokumen dapat ditentukan setalah topik LDA dibuat. Pada sisi sebelah kanan gambar diatas menunjukkan daftar topik serta 15 kata dengan distribusi tertinggi untuk masing-masing topik tersebut. 
+# 
+# Rumus Dirichlet Distribution:
+# $$
+# f\left(x_{1}, \ldots, x_{K} ; \alpha_{1}, \ldots, \alpha_{K}\right)=\frac{\Gamma\left(\sum_{i=1}^{K} \alpha_{i}\right)}{\prod_{i=1}^{K} \Gamma\left(\alpha_{i}\right)} \prod_{i=1}^{K} x_{i}^{\alpha_{i}-1}
+# $$
+
+# Untuk melakukan perhitungan LDA dengan library sklearn, dapat dilakukan dengan menggunakan kelas *LatentDirichletAllocation* yang ada pada modul *sklearn.decomposition*. Parameter yang digunakan antara lain:
+# - n_components = 2\
+#     Mengatur jumlah topik menjadi 2
+# 
+# - learning_method ='online'\
+#     Mengatur agar metode pembelajaran secara online. sehingga akan lebih cepat ketika menggunakan data dalam jumlah besar.
+#      
+# - random_state = 42\
+#     Untuk mendapatkan hasil pengacakan yang sama selama 42 kali kode dijalankan  
+# 
+# - max_iter = 1 \
+#     Untuk mengatur jumlah iterasi training data (epoch) menjadi 1 kali saja.
 
 # In[26]:
 
 
-from sklearn.decomposition import LatentDirichletAllocation
-lda_model=LatentDirichletAllocation(n_components=10,learning_method='online',random_state=42,max_iter=1) 
-# n_components is the number of topics
+lda_model = LatentDirichletAllocation(n_components=2,learning_method='online',random_state=42,max_iter=1) 
 
 
 # In[27]:
 
 
-lda_top=lda_model.fit_transform(vect_text)
+lda_top = lda_model.fit_transform(vect_text)
 
 
 # In[28]:
 
 
-print(lda_top.shape)  # (no_of_doc,no_of_topics)
-print(lda_top)
+(count_doc_lda, count_topic_lda) = lda_top.shape
+print(f"Jumlah dokumen\t: {count_doc_lda}")
+print(f"Jumlah topik\t: {count_topic_lda}")
 
 
 # In[29]:
-
-
-sum=0
-for i in lda_top[0]:
-  sum=sum+i
-print(sum)  
-
-
-# #### Note that the values in a particular row adds to 1. This is beacuse each value denotes the % of contribution of the corressponding topic in the document.
-
-# $$
-# w_{i,j} = tf_{i,j} * log( {{N} \over {df_{j}}} )
-# $$
-
-# In[30]:
 
 
 # composition of doc 0 for eg
@@ -402,55 +396,47 @@ for i,topic in enumerate(lda_top[0]):
   print("Topic ",i,": ",topic*100,"%")
 
 
-# #### As we can see Topic 7 & 8 are dominantly present in document 0.
-# 
-#  
+# Seperti yang dapat dilihat pada program di atas bahwa Topic 1 lebih dominan daripada topik 0 pada document 0.
+
+# In[30]:
+
+
+(count_topic_lda, count_word_lda) = lda_model.components_.shape
+print(f"Jumlah Topik\t: {count_topic_lda}")
+print(f"Jumlah kata\t: {count_word_lda}")
+
+
+# #### 10 kata paling penting untuk suatu topik
 
 # In[31]:
 
 
-print(lda_model.components_)
-print(lda_model.components_.shape)  # (no_of_topics*no_of_words)
+vocab = vect.get_feature_names_out()
 
+def get_important_words(comp, n):
+    vocab_comp = zip(vocab, comp)
+    sorted_words = sorted(vocab_comp, key= lambda x:x[1], reverse=True)[:n]
+    return " ".join([t[0] for t in sorted_words])
 
-# #### Most important words for a topic. (say 10 this time.)
 
 # In[32]:
 
 
-# most important words for each topic
-vocab = vect.get_feature_names_out()
-
 for i, comp in enumerate(lda_model.components_):
-    vocab_comp = zip(vocab, comp)
-    sorted_words = sorted(vocab_comp, key= lambda x:x[1], reverse=True)[:10]
     print("Topic "+str(i)+": ")
-    for t in sorted_words:
-        print(t[0],end=" ")
-    print("\n")
+    print(get_important_words(comp, 10))
+    print("")
 
 
-# In[ ]:
-
-
-
-
-
-# #### To better visualize words in a topic we can see the word cloud. For each topic top 50 words are plotted.
+# #### Visualisasi 50 kata penting menggunakan wordcloud
 
 # In[33]:
 
 
-from wordcloud import WordCloud
 # Generate a word cloud image for given topic
 def draw_word_cloud(index):
-  imp_words_topic=""
-  comp=lda_model.components_[index]
-  vocab_comp = zip(vocab, comp)
-  sorted_words = sorted(vocab_comp, key= lambda x:x[1], reverse=True)[:50]
-  for word in sorted_words:
-    imp_words_topic=imp_words_topic+" "+word[0]
-
+  imp_words_topic = get_important_words(lda_model.components_[index], 50)
+  
   wordcloud = WordCloud(width=600, height=400).generate(imp_words_topic)
   plt.figure( figsize=(5,5))
   plt.imshow(wordcloud)
@@ -463,13 +449,11 @@ def draw_word_cloud(index):
 # In[34]:
 
 
-# topic 0
 draw_word_cloud(0)
 
 
 # In[35]:
 
 
-# topic 1
-draw_word_cloud(1)  # ...
+draw_word_cloud(1)
 

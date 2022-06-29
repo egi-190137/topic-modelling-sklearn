@@ -48,7 +48,7 @@ Perintah untuk melakukan crawling data dan memasukkan data ke dalam file csv:
 Scrapy crawl link -O <nama-file>.csv
 ```
 
-Hasil Crawling link jurnal : [file](https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/link.csv)
+Hasil Crawling link jurnal : [file](./link.csv)
 
 # Crawling Judul dan abstraksi Jurnal
 
@@ -82,4 +82,4 @@ Perintah untuk melakukan crawling data dan memasukkan data ke dalam file csv:
 Scrapy crawl link -O <nama-file>.csv
 ```
 
-Hasil Crawling jududl dan abstraksi jurnal: [file](https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/detail_pta.csv)
+Hasil Crawling jududl dan abstraksi jurnal: [file](./detail_pta.csv)
