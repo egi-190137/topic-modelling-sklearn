@@ -977,7 +977,7 @@ idf( t,D ) = log { N \over { | \{ d \in D:t \in d \} | } }
 \]</div>
 <p><span class="math notranslate nohighlight">\( N \quad\quad\quad\quad\quad\)</span> : Jumlah seluruh dokumen</p>
 <p><span class="math notranslate nohighlight">\( | \{ d \in D:t \in d \} | \)</span> : Jumlah dokumen yang mengandung kata <span class="math notranslate nohighlight">\( t \)</span></p>
-<p>Rumus Inverse Document Frequency:</p>
+<p>Rumus TFIDF:</p>
 <div class="math notranslate nohighlight">
 \[
 tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
@@ -1329,8 +1329,14 @@ Untuk mengatur jumlah iterasi training data (epoch) menjadi 1 kali saja.</p></li
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah dokumen	: 60
-Jumlah topik	: 2
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">c:\Users\Egi Putra Ragil\Desktop\topic-modelling-sklearn\contents\topic-modelling.ipynb Cell 3&#39;</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/c%3A/Users/Egi%20Putra%20Ragil/Desktop/topic-modelling-sklearn/contents/topic-modelling.ipynb#ch0000002?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">count_doc_lda</span><span class="p">,</span> <span class="n">count_topic_lda</span><span class="p">)</span> <span class="o">=</span> <span class="n">lda_top</span><span class="o">.</span><span class="n">shape</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/c%3A/Users/Egi%20Putra%20Ragil/Desktop/topic-modelling-sklearn/contents/topic-modelling.ipynb#ch0000002?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah dokumen</span><span class="se">\t</span><span class="s2">: </span><span class="si">{</span><span class="n">count_doc_lda</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/c%3A/Users/Egi%20Putra%20Ragil/Desktop/topic-modelling-sklearn/contents/topic-modelling.ipynb#ch0000002?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah topik</span><span class="se">\t</span><span class="s2">: </span><span class="si">{</span><span class="n">count_topic_lda</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;lda_top&#39; is not defined
 </pre></div>
 </div>
 </div>
