@@ -301,24 +301,17 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Crawling Data
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#membuat-projek-scrapy">
+   Membuat Projek Scrapy
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#membuat-projek-scrapy">
-     Membuat Projek Scrapy
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#melakukan-crawling-link-jurnal">
-     Melakukan Crawling link jurnal
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#melakukan-crawling-link-jurnal">
+   Melakukan Crawling link jurnal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#crawling-judul-dan-abstraksi-jurnal">
    Crawling Judul dan abstraksi Jurnal
   </a>
@@ -342,24 +335,17 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Crawling Data
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#membuat-projek-scrapy">
+   Membuat Projek Scrapy
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#membuat-projek-scrapy">
-     Membuat Projek Scrapy
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#melakukan-crawling-link-jurnal">
-     Melakukan Crawling link jurnal
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#melakukan-crawling-link-jurnal">
+   Melakukan Crawling link jurnal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#crawling-judul-dan-abstraksi-jurnal">
    Crawling Judul dan abstraksi Jurnal
   </a>
@@ -415,11 +401,28 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scrapy</span> <span class="n">crawl</span> <span class="n">link</span> <span class="o">-</span><span class="n">O</span> <span class="o">&lt;</span><span class="n">nama</span><span class="o">-</span><span class="n">file</span><span class="o">&gt;.</span><span class="n">csv</span>
 </pre></div>
 </div>
-<p>Hasil Crawling link jurnal : <span class="xref myst">file</span></p>
+<p>Hasil Crawling link jurnal : <a class="reference external" href="https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/link.csv">file</a></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100007">https://pta.trunojoyo.ac.id/welcome/detail/070411100007</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100007">https://pta.trunojoyo.ac.id/welcome/detail/070411100007</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100007">https://pta.trunojoyo.ac.id/welcome/detail/070411100007</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100007">https://pta.trunojoyo.ac.id/welcome/detail/070411100007</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100007">https://pta.trunojoyo.ac.id/welcome/detail/070411100007</a></p></td>
+</tr>
+</tbody>
+</table>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="crawling-judul-dan-abstraksi-jurnal">
-<h1>Crawling Judul dan abstraksi Jurnal<a class="headerlink" href="#crawling-judul-dan-abstraksi-jurnal" title="Permalink to this headline">#</a></h1>
+<section id="crawling-judul-dan-abstraksi-jurnal">
+<h2>Crawling Judul dan abstraksi Jurnal<a class="headerlink" href="#crawling-judul-dan-abstraksi-jurnal" title="Permalink to this headline">#</a></h2>
 <p>Buat file spider baru untuk crawling judul dan abstraksi jurnal</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scrapy</span> <span class="n">genspider</span> <span class="n">detail</span> <span class="n">example</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
@@ -444,7 +447,32 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scrapy</span> <span class="n">crawl</span> <span class="n">link</span> <span class="o">-</span><span class="n">O</span> <span class="o">&lt;</span><span class="n">nama</span><span class="o">-</span><span class="n">file</span><span class="o">&gt;.</span><span class="n">csv</span>
 </pre></div>
 </div>
-<p>Hasil Crawling jududl dan abstraksi jurnal: <span class="xref myst">file</span></p>
+<p>Hasil Crawling jududl dan abstraksi jurnal: <a class="reference external" href="https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/detail_pta.csv">file</a></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Judul</p></th>
+<th class="head"><p>Abstraksi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PERANCANGAN DAN IMPLEMENTASI SISTEM …</p></td>
+<td><p>Sistem informasi akademik (SIAKAD) merupakan sistem informasi …</p></td>
+</tr>
+<tr class="row-odd"><td><p>PERANCANGAN DAN IMPLEMENTASI SISTEM …</p></td>
+<td><p>Sistem informasi akademik (SIAKAD) merupakan sistem informasi …</p></td>
+</tr>
+<tr class="row-even"><td><p>PERANCANGAN DAN IMPLEMENTASI SISTEM …</p></td>
+<td><p>Sistem informasi akademik (SIAKAD) merupakan sistem informasi …</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gerak Pekerja Pada Game Real Time …</p></td>
+<td><p>Gerak pekerja ada pada game yang memiliki genre RTS (Real-Time…</p></td>
+</tr>
+<tr class="row-even"><td><p>Gerak Pekerja Pada Game Real Time …</p></td>
+<td><p>Gerak pekerja ada pada game yang memiliki genre RTS (Real-Time…</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

@@ -49,8 +49,15 @@ Scrapy crawl link -O <nama-file>.csv
 ```
 
 Hasil Crawling link jurnal : [file](https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/link.csv)
+|link |
+|------------------------------------------------------------------------------------------------------------------------|
+|https://pta.trunojoyo.ac.id/welcome/detail/070411100007 |
+|https://pta.trunojoyo.ac.id/welcome/detail/070411100007 |
+|https://pta.trunojoyo.ac.id/welcome/detail/070411100007 |
+|https://pta.trunojoyo.ac.id/welcome/detail/070411100007 |
+|https://pta.trunojoyo.ac.id/welcome/detail/070411100007 |
 
-# Crawling Judul dan abstraksi Jurnal
+## Crawling Judul dan abstraksi Jurnal
 
 Buat file spider baru untuk crawling judul dan abstraksi jurnal
 
@@ -83,3 +90,11 @@ Scrapy crawl link -O <nama-file>.csv
 ```
 
 Hasil Crawling jududl dan abstraksi jurnal: [file](https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/detail_pta.csv)
+
+| Judul                                   | Abstraksi                                                         |
+| --------------------------------------- | ----------------------------------------------------------------- |
+| PERANCANGAN DAN IMPLEMENTASI SISTEM ... | Sistem informasi akademik (SIAKAD) merupakan sistem informasi ... |
+| PERANCANGAN DAN IMPLEMENTASI SISTEM ... | Sistem informasi akademik (SIAKAD) merupakan sistem informasi ... |
+| PERANCANGAN DAN IMPLEMENTASI SISTEM ... | Sistem informasi akademik (SIAKAD) merupakan sistem informasi ... |
+| Gerak Pekerja Pada Game Real Time ...   | Gerak pekerja ada pada game yang memiliki genre RTS (Real-Time... |
+| Gerak Pekerja Pada Game Real Time ...   | Gerak pekerja ada pada game yang memiliki genre RTS (Real-Time... |

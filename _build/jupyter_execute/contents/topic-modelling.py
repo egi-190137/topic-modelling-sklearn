@@ -57,7 +57,7 @@ pd.options.display.max_columns = 10
 
 # ## Membaca Data
 
-# Dataset yang digunakan : [file](./dataset_pta.csv)
+# Dataset yang digunakan : [file](https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/detail_pta.csv)
 
 # In[3]:
 
