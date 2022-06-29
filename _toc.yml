@@ -4,9 +4,9 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
-- file: crawling
-- file: preprocessing-seleksi
-- file: topic-modelling-using-lda-and-lsa-in-sklearn
+  - file: contents/markdown
+  - file: contents/notebooks
+  - file: contents/markdown-notebooks
+  - file: contents/crawling
+  - file: contents/preprocessing-seleksi
+  - file: contents/topic-modelling-using-lda-and-lsa-in-sklearn
