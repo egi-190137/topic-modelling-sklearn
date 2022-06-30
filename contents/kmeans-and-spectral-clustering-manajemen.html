@@ -764,7 +764,7 @@ memory usage: 2.0+ KB
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># melihat n_component terbaik</span>
 <span class="c1"># dengan cumulative explained variance</span>
-<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">tfidf</span><span class="p">)</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">tfidf</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
 <span class="n">cmv</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">cmv</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">cmv</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -772,45 +772,27 @@ memory usage: 2.0+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># melihat n_component terbaik</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># dengan cumulative explained variance</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">tfidf</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">cmv</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">cmv</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\decomposition\_pca.py:408,</span> in <span class="ni">PCA.fit</span><span class="nt">(self, X, y)</span>
-<span class="g g-Whitespace">    </span><span class="mi">385</span> <span class="sd">&quot;&quot;&quot;Fit the model with X.</span>
-<span class="g g-Whitespace">    </span><span class="mi">386</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">387</span><span class="sd"> Parameters</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">399</span><span class="sd">     Returns the instance itself.</span>
-<span class="g g-Whitespace">    </span><span class="mi">400</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">401</span> <span class="n">check_scalar</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">402</span>     <span class="bp">self</span><span class="o">.</span><span class="n">n_oversamples</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">403</span>     <span class="s2">&quot;n_oversamples&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">404</span>     <span class="n">min_val</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">405</span>     <span class="n">target_type</span><span class="o">=</span><span class="n">numbers</span><span class="o">.</span><span class="n">Integral</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">406</span> <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">408</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">409</span> <span class="k">return</span> <span class="bp">self</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\decomposition\_pca.py:451,</span> in <span class="ni">PCA._fit</span><span class="nt">(self, X)</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span> <span class="c1"># Raise an error for sparse input.</span>
-<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="c1"># This is more informative than the generic one raised by check_array.</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span> <span class="k">if</span> <span class="n">issparse</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">451</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">452</span>         <span class="s2">&quot;PCA does not support sparse input. See &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">453</span>         <span class="s2">&quot;TruncatedSVD for a possible alternative.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">454</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">456</span> <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_data</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">457</span>     <span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">],</span> <span class="n">ensure_2d</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">copy</span>
-<span class="g g-Whitespace">    </span><span class="mi">458</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">460</span> <span class="c1"># Handle n_components==None</span>
-
-<span class="ne">TypeError</span>: PCA does not support sparse input. See TruncatedSVD for a possible alternative.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0454096  0.07911095 0.10255799 0.12510597 0.14725636 0.16717787
+ 0.18674475 0.20555804 0.2225501  0.23886512 0.2548316  0.26993916
+ 0.28443973 0.29847928 0.31226707 0.3256089  0.33856201 0.35126803
+ 0.36380606 0.37601742 0.38773211 0.39923166 0.41058898 0.42184242
+ 0.43286777 0.44366179 0.45438552 0.46502234 0.47549674 0.48578688
+ 0.49590527 0.50583578 0.51563214 0.52533007 0.53488291 0.54422533
+ 0.55338847 0.56228939 0.57114364 0.57987676 0.58854653 0.59715921
+ 0.6056952  0.61410711 0.6224292  0.63065737 0.63882042 0.64684258
+ 0.65482861 0.66265281 0.67037837 0.67803744 0.68566499 0.69321225
+ 0.70070238 0.70810315 0.71544196 0.72267979 0.7297557  0.73678636
+ 0.74366413 0.75048159 0.75725466 0.76392898 0.77057884 0.77710505
+ 0.78358478 0.78999958 0.79637899 0.8027048  0.80883813 0.81488497
+ 0.82070761 0.82644965 0.83211245 0.8377157  0.84329213 0.84873579
+ 0.85409832 0.85937515 0.86453232 0.86964167 0.87471285 0.87972384
+ 0.88462873 0.889467   0.89418519 0.89883764 0.90343581 0.90797059
+ 0.912327   0.91660407 0.92083865 0.9250513  0.92916885 0.93319015
+ 0.93717338 0.94106646 0.94486514 0.9485735  0.95225333 0.95587707
+ 0.95935933 0.96281793 0.96625513 0.96947546 0.97265853 0.97570643
+ 0.97852756 0.98129173 0.983992   0.98663909 0.98920922 0.99167019
+ 0.99395463 0.99622162 0.9984603  1.         1.        ]
+(119,)
 </pre></div>
 </div>
 </div>
@@ -857,7 +839,9 @@ C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packag
   warnings.warn(
 C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
   warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
   warnings.warn(
 C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
   warnings.warn(
@@ -875,83 +859,9 @@ C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packag
   warnings.warn(
 C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
   warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
-  warnings.warn(
-C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
   warnings.warn(
 C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
   warnings.warn(
@@ -979,7 +889,91 @@ C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packag
   warnings.warn(
 </pre></div>
 </div>
-<img alt="../_images/kmeans-and-spectral-clustering-manajemen_15_1.png" src="../_images/kmeans-and-spectral-clustering-manajemen_15_1.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+C:\Users\Egi Putra Ragil\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\utils\validation.py:727: FutureWarning: np.matrix usage is deprecated in 1.0 and will raise a TypeError in 1.2. Please convert to a numpy array with np.asarray. For more information see: https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../_images/kmeans-and-spectral-clustering-manajemen_15_7.png" src="../_images/kmeans-and-spectral-clustering-manajemen_15_7.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Distortion Score Elbow for KMeans Clustering&#39;}, xlabel=&#39;k&#39;, ylabel=&#39;distortion score&#39;&gt;
 </pre></div>
 </div>
@@ -1015,12 +1009,12 @@ d(p, q)=\sqrt{\left(p_{1}-q_{1}\right)^{2}+\left(p_{2}-q_{2}\right)^{2}+\left(p_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.20970097  0.11601499]
- [ 0.38906641 -0.18679514]
- [ 0.18133197  0.26513852]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.20970086  0.11584072]
+ [ 0.38906601 -0.18672504]
+ [ 0.18133406  0.26547683]]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1a8fde91870&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1df0871aad0&gt;
 </pre></div>
 </div>
 <img alt="../_images/kmeans-and-spectral-clustering-manajemen_17_2.png" src="../_images/kmeans-and-spectral-clustering-manajemen_17_2.png" />
