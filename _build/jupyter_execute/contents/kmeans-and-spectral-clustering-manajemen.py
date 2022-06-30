@@ -127,7 +127,7 @@ print(vectorizer.get_feature_names()[:10])
 
 # melihat n_component terbaik
 # dengan cumulative explained variance
-pca = PCA().fit(tfidf)
+pca = PCA().fit(tfidf.toarray())
 cmv = pca.explained_variance_ratio_.cumsum()
 print(cmv)
 print(cmv.shape)
@@ -150,7 +150,7 @@ print(cmv.shape)
 # $x_{i}$ = jarak data obyek ke-i\
 # $c_{k}$ = pusat _cluster_ ke-i
 
-# In[53]:
+# In[12]:
 
 
 """First cluster using KMeans and run the elbow visualizer to find the best number of clusters"""
@@ -173,7 +173,7 @@ visualizer.show()
 # _p_ = data\
 # _q_ = centroid
 
-# In[56]:
+# In[13]:
 
 
 """Train the Kmeans with the best n of clusters"""
