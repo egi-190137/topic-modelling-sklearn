@@ -38,7 +38,7 @@ class LinkSpider(scrapy.Spider):
     def parse(self, response):
         for jurnal in response.css('#content_journal > ul > li'):
             yield {
-                'link': response.css('div:nth-child(3) > a::attr(href)').get(),
+                'link': jurnal.css('div:nth-child(3) > a::attr(href)').get(),
             }
 ```
 
@@ -73,7 +73,7 @@ import pandas as pd
 
 class DetailSpider(scrapy.Spider):
     name = 'detail'
-    data_csv = pd.read_csv('link_baru.csv').values
+    data_csv = pd.read_csv('link.csv').values
     start_urls = [ link[0] for link in data_csv ]
 
     def parse(self, response):
