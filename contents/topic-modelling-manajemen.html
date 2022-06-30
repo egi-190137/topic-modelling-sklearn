@@ -54,6 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Clustering Jurnal menggunakan K-Means" href="kmeans-and-spectral-clustering-manajemen.html" />
+    <link rel="prev" title="Crawling Data" href="crawling.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -113,14 +115,14 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="crawling.html">
    Crawling Data
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="topic-modelling-manajemen.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Topic Modelling dengan LSA dan LDA
   </a>
  </li>
@@ -188,7 +190,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/egi-190137/topic-modelling-sklearn/master?urlpath=tree/docs/contents/topic-modelling.ipynb"
+        <a href="https://mybinder.org/v2/gh/egi-190137/topic-modelling-sklearn/master?urlpath=tree/docs/contents/topic-modelling-manajemen.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -206,7 +208,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/egi-190137/topic-modelling-sklearn/blob/master/docs/contents/topic-modelling.ipynb"
+        <a href="https://colab.research.google.com/github/egi-190137/topic-modelling-sklearn/blob/master/docs/contents/topic-modelling-manajemen.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -266,7 +268,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/egi-190137/topic-modelling-sklearn/issues/new?title=Issue%20on%20page%20%2Fcontents/topic-modelling.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/egi-190137/topic-modelling-sklearn/issues/new?title=Issue%20on%20page%20%2Fcontents/topic-modelling-manajemen.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -294,7 +296,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/contents/topic-modelling.ipynb"
+        <a href="../_sources/contents/topic-modelling-manajemen.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -383,6 +385,18 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hapus-kolom-judul">
      Hapus kolom ‘judul’
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mengganti-nama-kolom-cleaned-judul-dengan-judul">
+     Mengganti nama kolom
+     <strong>
+      cleaned_judul
+     </strong>
+     dengan
+     <strong>
+      judul
+     </strong>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -492,6 +506,18 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hapus-kolom-judul">
      Hapus kolom ‘judul’
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mengganti-nama-kolom-cleaned-judul-dengan-judul">
+     Mengganti nama kolom
+     <strong>
+      cleaned_judul
+     </strong>
+     dengan
+     <strong>
+      judul
+     </strong>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -623,80 +649,7 @@ Untuk visualisasi kata yang paling sering muncul.</p></li>
 <p>Dataset yang digunakan merupakan hasil dari crawling judul dan abstraksi jurnal yang telah ditambah nilai kolom bidang minat dan dihapus duplikasi data-nya.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dataset_pta.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>judul</th>
-      <th>abstraksi</th>
-      <th>bidang minat</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Gerak Pekerja Pada Game Real Time Strategy Men...</td>
-      <td>Gerak pekerja ada pada game yang memiliki genr...</td>
-      <td>CAI</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>PEMANFAATAN TOGAF ADM UNTUK PERANCANGAN SISTEM...</td>
-      <td>Penyusunan Sistem Informasi Dinas Perindustria...</td>
-      <td>RPL</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>RANCANG BANGUN MANAJEMEN PEMBELAJARAN DAN TES ...</td>
-      <td>Penggunaan teknologi mobile saat ini sangat ma...</td>
-      <td>RPL</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN KARYAWAN ...</td>
-      <td>Sumber daya manusia mutlak dibutuhkan untuk ke...</td>
-      <td>CAI</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>SISTEM PENENTUAN STATUS GIZI PASIEN RAWAT INAP...</td>
-      <td>Di Indonesia masalah perkembangan gizi adalah ...</td>
-      <td>CAI</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>Data yang digunakan dalam program ini hanya data pada kolom ‘judul’. Untuk mengambil kolom ‘judul’ saja dapat dilakukan dengan inisialisasi ulang df dengan df[[‘judul’]]</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;judul&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;detail.csv&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -721,32 +674,164 @@ Untuk visualisasi kata yang paling sering muncul.</p></li>
     <tr style="text-align: right;">
       <th></th>
       <th>judul</th>
+      <th>abstraksi</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Gerak Pekerja Pada Game Real Time Strategy Men...</td>
+      <td>PERANCANGAN DAN IMPLEMENTASI SISTEM DATABASE \...</td>
+      <td>Sistem  informasi  akademik  (SIAKAD) merupaka...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>PEMANFAATAN TOGAF ADM UNTUK PERANCANGAN SISTEM...</td>
+      <td>PERANCANGAN DAN IMPLEMENTASI SISTEM DATABASE \...</td>
+      <td>Sistem  informasi  akademik  (SIAKAD) merupaka...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>RANCANG BANGUN MANAJEMEN PEMBELAJARAN DAN TES ...</td>
+      <td>PERANCANGAN DAN IMPLEMENTASI SISTEM DATABASE \...</td>
+      <td>Sistem  informasi  akademik  (SIAKAD) merupaka...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN KARYAWAN ...</td>
+      <td>Gerak Pekerja Pada Game Real Time Strategy Men...</td>
+      <td>Gerak pekerja ada pada game yang memiliki genr...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>SISTEM PENENTUAN STATUS GIZI PASIEN RAWAT INAP...</td>
+      <td>Gerak Pekerja Pada Game Real Time Strategy Men...</td>
+      <td>Gerak pekerja ada pada game yang memiliki genr...</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(600, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>judul</th>
+      <th>abstraksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>PERANCANGAN DAN IMPLEMENTASI SISTEM DATABASE \...</td>
+      <td>Sistem  informasi  akademik  (SIAKAD) merupaka...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Gerak Pekerja Pada Game Real Time Strategy Men...</td>
+      <td>Gerak pekerja ada pada game yang memiliki genr...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>PEMANFAATAN TOGAF ADM UNTUK PERANCANGAN SISTEM...</td>
+      <td>Penyusunan Sistem Informasi Dinas Perindustria...</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>RANCANG BANGUN MANAJEMEN PEMBELAJARAN DAN TES ...</td>
+      <td>Penggunaan teknologi mobile saat ini sangat ma...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>RANCANG BANGUN APLIKASI INTRUSION PREVENTION S...</td>
+      <td>Dalam setiap perusahaan tentunya memiliki data...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(120, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Data yang digunakan dalam program ini hanya data pada kolom ‘judul’. Untuk mengambil kolom ‘judul’ saja dapat dilakukan dengan inisialisasi ulang df dengan df[[‘judul’]]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Judul&#39;</span><span class="p">]]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">Input In [7],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Judul&#39;</span><span class="p">]]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\frame.py:3511,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3509</span>     <span class="k">if</span> <span class="n">is_iterator</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3510</span>         <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3511</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">_get_indexer_strict</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;columns&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">3513</span> <span class="c1"># take() does not accept boolean indexers</span>
+<span class="g g-Whitespace">   </span><span class="mi">3514</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\indexes\base.py:5782,</span> in <span class="ni">Index._get_indexer_strict</span><span class="nt">(self, key, axis_name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5779</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">5780</span>     <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">new_indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reindex_non_unique</span><span class="p">(</span><span class="n">keyarr</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">5782</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raise_if_missing</span><span class="p">(</span><span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">axis_name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5784</span> <span class="n">keyarr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5785</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">Index</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">5786</span>     <span class="c1"># GH 42790 - Preserve name from an Index</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\indexes\base.py:5842,</span> in <span class="ni">Index._raise_if_missing</span><span class="nt">(self, key, indexer, axis_name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5840</span>     <span class="k">if</span> <span class="n">use_interval_msg</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">5841</span>         <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">5842</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;None of [</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">] are in the [</span><span class="si">{</span><span class="n">axis_name</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5844</span> <span class="n">not_found</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ensure_index</span><span class="p">(</span><span class="n">key</span><span class="p">)[</span><span class="n">missing_mask</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="g g-Whitespace">   </span><span class="mi">5845</span> <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">not_found</span><span class="si">}</span><span class="s2"> not in index&quot;</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &quot;None of [Index([&#39;Judul&#39;], dtype=&#39;object&#39;)] are in the [columns]&quot;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="pre-processing-data">
@@ -775,8 +860,23 @@ Untuk visualisasi kata yang paling sering muncul.</p></li>
   <span class="n">cleaned_text</span> <span class="o">=</span> <span class="n">cleaned_text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
   <span class="c1"># Hapus stopword</span>
   <span class="n">cleaned_text</span> <span class="o">=</span> <span class="n">stopword</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">cleaned_text</span><span class="p">)</span>
+
+  <span class="n">cleaned_text</span> <span class="o">=</span> <span class="n">cleaned_text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+  <span class="n">cleaned_text</span> <span class="o">=</span> <span class="n">cleaned_text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">cleaned_text</span>
   
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">ss&quot;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;ss&#39;
 </pre></div>
 </div>
 </div>
@@ -823,28 +923,28 @@ Untuk visualisasi kata yang paling sering muncul.</p></li>
   <tbody>
     <tr>
       <th>0</th>
+      <td>PERANCANGAN DAN IMPLEMENTASI SISTEM DATABASE \...</td>
+      <td>perancangan implementasi sistem database terdi...</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>Gerak Pekerja Pada Game Real Time Strategy Men...</td>
       <td>gerak pekerja game real time strategy finite s...</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>10</th>
       <td>PEMANFAATAN TOGAF ADM UNTUK PERANCANGAN SISTEM...</td>
       <td>pemanfaatan togaf adm perancangan sistem infor...</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>15</th>
       <td>RANCANG BANGUN MANAJEMEN PEMBELAJARAN DAN TES ...</td>
       <td>rancang bangun manajemen pembelajaran tes toef...</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN KARYAWAN ...</td>
-      <td>sistem pendukung keputusan pemilihan karyawan ...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>SISTEM PENENTUAN STATUS GIZI PASIEN RAWAT INAP...</td>
-      <td>sistem penentuan status gizi pasien rawat inap...</td>
+      <th>20</th>
+      <td>RANCANG BANGUN APLIKASI INTRUSION PREVENTION S...</td>
+      <td>rancang bangun aplikasi intrusion prevention s...</td>
     </tr>
   </tbody>
 </table>
@@ -891,23 +991,86 @@ Untuk visualisasi kata yang paling sering muncul.</p></li>
   <tbody>
     <tr>
       <th>0</th>
-      <td>gerak pekerja game real time strategy finite s...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>pemanfaatan togaf adm perancangan sistem infor...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>rancang bangun manajemen pembelajaran tes toef...</td>
+      <td>perancangan implementasi sistem database terdi...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>sistem pendukung keputusan pemilihan karyawan ...</td>
+      <td>gerak pekerja game real time strategy finite s...</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>sistem penentuan status gizi pasien rawat inap...</td>
+      <th>10</th>
+      <td>pemanfaatan togaf adm perancangan sistem infor...</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>rancang bangun manajemen pembelajaran tes toef...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>rancang bangun aplikasi intrusion prevention s...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="mengganti-nama-kolom-cleaned-judul-dengan-judul">
+<h3>Mengganti nama kolom <strong>cleaned_judul</strong> dengan <strong>judul</strong><a class="headerlink" href="#mengganti-nama-kolom-cleaned-judul-dengan-judul" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;judul&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>judul</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>perancangan implementasi sistem database terdi...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>gerak pekerja game real time strategy finite s...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>pemanfaatan togaf adm perancangan sistem infor...</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>rancang bangun manajemen pembelajaran tes toef...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>rancang bangun aplikasi intrusion prevention s...</td>
     </tr>
   </tbody>
 </table>
@@ -923,47 +1086,7 @@ Untuk visualisasi kata yang paling sering muncul.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\indexes\base.py:3621,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3620</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">3621</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3622</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\_libs\index.pyx:136,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\_libs\index.pyx:163,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">File pandas\_libs\hashtable_class_helper.pxi:5198,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="nn">File pandas\_libs\hashtable_class_helper.pxi:5206,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="ne">KeyError</span>: &#39;judul&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;judul&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\frame.py:3505,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3503</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3504</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">3505</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3506</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">3507</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\indexes\base.py:3623,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3621</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3622</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">3623</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">   </span><span class="mi">3624</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3625</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
-<span class="g g-Whitespace">   </span><span class="mi">3626</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
-<span class="g g-Whitespace">   </span><span class="mi">3627</span>     <span class="c1">#  the TypeError.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3628</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-
-<span class="ne">KeyError</span>: &#39;judul&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;perancangan implementasi sistem database terdistribusi oracle studi siakad universitas trunojoyo&#39;
 </pre></div>
 </div>
 </div>
@@ -1015,7 +1138,7 @@ tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah atribut dalam Document-Term Matrix : 358
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah atribut dalam Document-Term Matrix : 639
 </pre></div>
 </div>
 </div>
@@ -1052,17 +1175,17 @@ tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>abstrak</th>
       <th>acute</th>
       <th>addie</th>
       <th>additive</th>
       <th>additiveweighting</th>
-      <th>adm</th>
       <th>...</th>
-      <th>wafa</th>
-      <th>wajah</th>
-      <th>web</th>
       <th>weight</th>
       <th>weighting</th>
+      <th>windows</th>
+      <th>winnowing</th>
+      <th>xna</th>
     </tr>
   </thead>
   <tbody>
@@ -1072,7 +1195,7 @@ tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000000</td>
+      <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1086,7 +1209,7 @@ tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.300817</td>
+      <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1100,7 +1223,7 @@ tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000000</td>
+      <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1114,7 +1237,7 @@ tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000000</td>
+      <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1128,7 +1251,7 @@ tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000000</td>
+      <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1138,7 +1261,7 @@ tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
     </tr>
   </tbody>
 </table>
-<p>5 rows × 358 columns</p>
+<p>5 rows × 639 columns</p>
 </div></div></div>
 </div>
 <p>Mencari nilai <strong>idf</strong> dengan mengakses atribut <strong>idf_</strong> pada objek <strong>tfidfVectorizer</strong>. Atribut <strong>idf_</strong> hanya terdefinisi apabila parameter <strong>use_idf</strong> saat instansiasi objekk tfidfVectorizer bernilai <strong>True</strong>. Namun, <strong>use_idf</strong> sudah bernilai <strong>True</strong> secara default, sehingga kita dapat perlu menentukannya secara manual.</p>
@@ -1169,11 +1292,11 @@ tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 Kata paling sering muncul:
-1. sistem	(Nilai idf: 1.709676482511156)
-2. metode	(Nilai idf: 1.9753796482441615)
-3. berbasis	(Nilai idf: 2.11514159061932)
-4. studi	(Nilai idf: 2.220502106277147)
-5. rancang	(Nilai idf: 2.3382851419335298)
+1. metode	(Nilai idf: 1.9891280558264213)
+2. sistem	(Nilai idf: 1.9891280558264213)
+3. berbasis	(Nilai idf: 2.2404424841073274)
+4. aplikasi	(Nilai idf: 2.7047480922384253)
+5. informasi	(Nilai idf: 2.80005827204275)
 </pre></div>
 </div>
 </div>
@@ -1188,10 +1311,10 @@ tfidf( t,d,D ) = tf( t,d ) \times idf( t,D )
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 Kata paling jarang muncul:
-1. weighting	(Nilai idf: 4.417726683613366)
-2. weight	(Nilai idf: 4.417726683613366)
-3. wajah	(Nilai idf: 4.417726683613366)
-4. wafa	(Nilai idf: 4.417726683613366)
+1. xna	(Nilai idf: 5.102643365036796)
+2. windows	(Nilai idf: 5.102643365036796)
+3. weight	(Nilai idf: 5.102643365036796)
+4. webstudi	(Nilai idf: 5.102643365036796)
 </pre></div>
 </div>
 </div>
@@ -1243,8 +1366,8 @@ A_{mn} = U_{mm} \times S_{mn} \times V^{T}_{nn}
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Document 0 :
-Topic 0 : 1.3810694835999033
-Topic 1 : -3.384805564095132
+Topic 0 : 28.813034171627685
+Topic 1 : -6.20069419701392
 </pre></div>
 </div>
 </div>
@@ -1259,7 +1382,7 @@ Topic 1 : -3.384805564095132
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah topik	: 2
-Jumlah kata	: 358
+Jumlah kata	: 639
 </pre></div>
 </div>
 </div>
@@ -1283,10 +1406,10 @@ Jumlah kata	: 358
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 0: 
-studi sistem bangun rancang informasi madura berbasis trunojoyo universitas pembelajaran
+sistem studi bangun rancang madura informasi berbasis metode trunojoyo universitas
 
 Topic 1: 
-keputusan pendukung metode sistem topsis penentuan pemilihan saw penilaian unggulan
+metode keputusan pendukung analysis sistem siswa component kabupaten penentuan citra
 </pre></div>
 </div>
 </div>
@@ -1339,14 +1462,8 @@ Untuk mengatur jumlah iterasi training data (epoch) menjadi 1 kali saja.</p></li
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">c:\Users\Egi Putra Ragil\Desktop\topic-modelling-sklearn\contents\topic-modelling.ipynb Cell 3&#39;</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/c%3A/Users/Egi%20Putra%20Ragil/Desktop/topic-modelling-sklearn/contents/topic-modelling.ipynb#ch0000002?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">count_doc_lda</span><span class="p">,</span> <span class="n">count_topic_lda</span><span class="p">)</span> <span class="o">=</span> <span class="n">lda_top</span><span class="o">.</span><span class="n">shape</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/c%3A/Users/Egi%20Putra%20Ragil/Desktop/topic-modelling-sklearn/contents/topic-modelling.ipynb#ch0000002?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah dokumen</span><span class="se">\t</span><span class="s2">: </span><span class="si">{</span><span class="n">count_doc_lda</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/c%3A/Users/Egi%20Putra%20Ragil/Desktop/topic-modelling-sklearn/contents/topic-modelling.ipynb#ch0000002?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah topik</span><span class="se">\t</span><span class="s2">: </span><span class="si">{</span><span class="n">count_topic_lda</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;lda_top&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah dokumen	: 120
+Jumlah topik	: 2
 </pre></div>
 </div>
 </div>
@@ -1362,8 +1479,8 @@ Untuk mengatur jumlah iterasi training data (epoch) menjadi 1 kali saja.</p></li
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Document 0: 
-Topic  0 :  36.37929562061006 %
-Topic  1 :  63.62070437938995 %
+Topic  0 :  35.178890244018106 %
+Topic  1 :  64.8211097559819 %
 </pre></div>
 </div>
 </div>
@@ -1379,7 +1496,7 @@ Topic  1 :  63.62070437938995 %
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Topik	: 2
-Jumlah kata	: 358
+Jumlah kata	: 639
 </pre></div>
 </div>
 </div>
@@ -1409,10 +1526,10 @@ Jumlah kata	: 358
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 0: 
-bangun berbasis intelligent sistem informasi web trunojoyo pembelajaran kabupaten rancang
+sistem dokumen metode aplikasi analysis informasi perbandingan keputusan perancangan pembuatan
 
 Topic 1: 
-klasifikasi studi android sistem proses perancangan arsip evaluasi run informasi
+berbasis sistem bangun rancang madura informasi metode studi universitas akademik
 </pre></div>
 </div>
 </div>
@@ -1444,7 +1561,7 @@ klasifikasi studi android sistem proses perancangan arsip evaluasi run informasi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/topic-modelling_62_0.png" src="../_images/topic-modelling_62_0.png" />
+<img alt="../_images/topic-modelling-manajemen_68_0.png" src="../_images/topic-modelling-manajemen_68_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1454,7 +1571,7 @@ klasifikasi studi android sistem proses perancangan arsip evaluasi run informasi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/topic-modelling_63_0.png" src="../_images/topic-modelling_63_0.png" />
+<img alt="../_images/topic-modelling-manajemen_69_0.png" src="../_images/topic-modelling-manajemen_69_0.png" />
 </div>
 </div>
 </section>
@@ -1489,6 +1606,20 @@ klasifikasi studi android sistem proses perancangan arsip evaluasi run informasi
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="crawling.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Crawling Data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="kmeans-and-spectral-clustering-manajemen.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Clustering Jurnal menggunakan K-Means</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

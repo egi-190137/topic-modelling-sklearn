@@ -1,4 +1,6 @@
-# Welcome to your Jupyter Book
+# Welcome to My Jupyter Book
+
+##### 19-137 Egi Putra Ragil
 
 This is a small sample book to give you a feel for how book content is
 structured.

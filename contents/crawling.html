@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Topic Modelling dengan LSA dan LDA" href="topic-modelling.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+    <link rel="next" title="Topic Modelling dengan LSA dan LDA" href="topic-modelling-manajemen.html" />
+    <link rel="prev" title="Welcome to My Jupyter Book" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -109,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome to your Jupyter Book
+                    Welcome to My Jupyter Book
                 </a>
             </li>
         </ul>
@@ -120,8 +120,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="topic-modelling.html">
+  <a class="reference internal" href="topic-modelling-manajemen.html">
    Topic Modelling dengan LSA dan LDA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kmeans-and-spectral-clustering-manajemen.html">
+   Clustering Jurnal menggunakan K-Means
   </a>
  </li>
 </ul>
@@ -197,7 +202,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/egi-190137/topic-modelling-sklearn"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -214,7 +219,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontents/crawling.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/egi-190137/topic-modelling-sklearn/issues/new?title=Issue%20on%20page%20%2Fcontents/crawling.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -302,11 +307,6 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#membuat-projek-scrapy">
-   Membuat Projek Scrapy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#melakukan-crawling-link-jurnal">
    Melakukan Crawling link jurnal
   </a>
@@ -336,11 +336,6 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#membuat-projek-scrapy">
-   Membuat Projek Scrapy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#melakukan-crawling-link-jurnal">
    Melakukan Crawling link jurnal
   </a>
@@ -362,24 +357,9 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="crawling-data">
 <h1>Crawling Data<a class="headerlink" href="#crawling-data" title="Permalink to this headline">#</a></h1>
-<section id="membuat-projek-scrapy">
-<h2>Membuat Projek Scrapy<a class="headerlink" href="#membuat-projek-scrapy" title="Permalink to this headline">#</a></h2>
-<p>Sebelum melakukan crawling data, kita perlu membuat projek scrapy. Untuk cara membuatnya cukup dengan mengetikkan perintah berikut pada <em>terminal</em> atau <em>command prompt</em>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scrapy</span> <span class="n">startproject</span> <span class="o">&lt;</span><span class="n">nama</span><span class="o">-</span><span class="n">project</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</section>
 <section id="melakukan-crawling-link-jurnal">
 <h2>Melakukan Crawling link jurnal<a class="headerlink" href="#melakukan-crawling-link-jurnal" title="Permalink to this headline">#</a></h2>
-<p>Setelah membuat projek buka direktori projek tersebut dengan perintah berikut:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">&lt;</span><span class="n">nama</span><span class="o">-</span><span class="n">projek</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>Kemudian buat 1 file spider dengan perintah berikut:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scrapy</span> <span class="n">genspider</span> <span class="n">link</span> <span class="n">example</span><span class="o">.</span><span class="n">com</span>
-</pre></div>
-</div>
-<p>Lalu edit file spider menjadi seperti code di bawah ini:</p>
+<p>Buat 1 file python, lalu edit file spider menjadi seperti code di bawah ini:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 
 
@@ -387,91 +367,53 @@ title="Print to PDF"
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;link&#39;</span>
     <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">120</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">start_urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;https://pta.trunojoyo.ac.id/c_search/byprod/10/</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">urls</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;https://pta.trunojoyo.ac.id/c_search/byprod/7/</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">jurnal</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;#content_journal &gt; ul &gt; li&#39;</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
             <span class="k">yield</span> <span class="p">{</span>
-                <span class="s1">&#39;link&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div:nth-child(3) &gt; a::attr(href)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+                <span class="s1">&#39;link&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;#content_journal &gt; ul &gt; li:nth-child(</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">) &gt; div:nth-child(3) &gt; a::attr(href)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
             <span class="p">}</span>
 </pre></div>
 </div>
 <p>Perintah untuk melakukan crawling data dan memasukkan data ke dalam file csv:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scrapy</span> <span class="n">crawl</span> <span class="n">link</span> <span class="o">-</span><span class="n">O</span> <span class="o">&lt;</span><span class="n">nama</span><span class="o">-</span><span class="n">file</span><span class="o">&gt;.</span><span class="n">csv</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scrapy</span> <span class="n">runspider</span> <span class="o">&lt;</span><span class="n">code</span><span class="o">-</span><span class="n">python</span><span class="o">&gt;.</span><span class="n">py</span> <span class="o">-</span><span class="n">O</span> <span class="o">&lt;</span><span class="n">nama</span><span class="o">-</span><span class="n">file</span><span class="o">&gt;.</span><span class="n">csv</span>
 </pre></div>
 </div>
 <p>Hasil Crawling link jurnal : <a class="reference external" href="https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/link.csv">file</a></p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>link</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100007">https://pta.trunojoyo.ac.id/welcome/detail/070411100007</a></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100007">https://pta.trunojoyo.ac.id/welcome/detail/070411100007</a></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100007">https://pta.trunojoyo.ac.id/welcome/detail/070411100007</a></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100007">https://pta.trunojoyo.ac.id/welcome/detail/070411100007</a></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://pta.trunojoyo.ac.id/welcome/detail/070411100007">https://pta.trunojoyo.ac.id/welcome/detail/070411100007</a></p></td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="crawling-judul-dan-abstraksi-jurnal">
 <h2>Crawling Judul dan abstraksi Jurnal<a class="headerlink" href="#crawling-judul-dan-abstraksi-jurnal" title="Permalink to this headline">#</a></h2>
-<p>Buat file spider baru untuk crawling judul dan abstraksi jurnal</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scrapy</span> <span class="n">genspider</span> <span class="n">detail</span> <span class="n">example</span><span class="o">.</span><span class="n">com</span>
-</pre></div>
-</div>
-<p>Lalu edit file spider seperti code berikut:</p>
+<p>Buat file python baru untuk crawling judul dan abstraksi jurnal, Lalu edit file spider seperti code berikut:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="k">class</span> <span class="nc">DetailSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;detail&#39;</span>
-    <span class="n">data_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;link_baru.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span> <span class="n">link</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">data_csv</span> <span class="p">]</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;quotes&quot;</span>
+
+    <span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;link.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">urls</span> <span class="o">=</span> <span class="p">[</span> <span class="n">link</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">data_csv</span> <span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
         <span class="k">yield</span> <span class="p">{</span>
-            <span class="s1">&#39;Judul&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;#content_journal &gt; ul &gt; li &gt; div:nth-child(2) &gt; a::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">(),</span>
-            <span class="s1">&#39;Abstraksi&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;#content_journal &gt; ul &gt; li &gt; div:nth-child(4) &gt; div:nth-child(2) &gt; p::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">(),</span>
+            <span class="s1">&#39;judul&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;#content_journal &gt; ul &gt; li &gt; div:nth-child(2) &gt; a::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="s1">&#39;abstraksi&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;#content_journal &gt; ul &gt; li &gt; div:nth-child(4) &gt; div:nth-child(2) &gt; p::text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
         <span class="p">}</span>
 </pre></div>
 </div>
 <p>Perintah untuk melakukan crawling data dan memasukkan data ke dalam file csv:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scrapy</span> <span class="n">crawl</span> <span class="n">link</span> <span class="o">-</span><span class="n">O</span> <span class="o">&lt;</span><span class="n">nama</span><span class="o">-</span><span class="n">file</span><span class="o">&gt;.</span><span class="n">csv</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Scrapy</span> <span class="n">runspider</span> <span class="o">&lt;</span><span class="n">code</span><span class="o">-</span><span class="n">python</span><span class="o">&gt;.</span><span class="n">py</span> <span class="o">-</span><span class="n">O</span> <span class="o">&lt;</span><span class="n">nama</span><span class="o">-</span><span class="n">file</span><span class="o">&gt;.</span><span class="n">csv</span>
 </pre></div>
 </div>
-<p>Hasil Crawling jududl dan abstraksi jurnal: <a class="reference external" href="https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/detail_pta.csv">file</a></p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Judul</p></th>
-<th class="head"><p>Abstraksi</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>PERANCANGAN DAN IMPLEMENTASI SISTEM …</p></td>
-<td><p>Sistem informasi akademik (SIAKAD) merupakan sistem informasi …</p></td>
-</tr>
-<tr class="row-odd"><td><p>PERANCANGAN DAN IMPLEMENTASI SISTEM …</p></td>
-<td><p>Sistem informasi akademik (SIAKAD) merupakan sistem informasi …</p></td>
-</tr>
-<tr class="row-even"><td><p>PERANCANGAN DAN IMPLEMENTASI SISTEM …</p></td>
-<td><p>Sistem informasi akademik (SIAKAD) merupakan sistem informasi …</p></td>
-</tr>
-<tr class="row-odd"><td><p>Gerak Pekerja Pada Game Real Time …</p></td>
-<td><p>Gerak pekerja ada pada game yang memiliki genre RTS (Real-Time…</p></td>
-</tr>
-<tr class="row-even"><td><p>Gerak Pekerja Pada Game Real Time …</p></td>
-<td><p>Gerak pekerja ada pada game yang memiliki genre RTS (Real-Time…</p></td>
-</tr>
-</tbody>
-</table>
 </section>
 </section>
 
@@ -506,10 +448,10 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome to your Jupyter Book</p>
+            <p class="prev-next-title">Welcome to My Jupyter Book</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="topic-modelling.html" title="next page">
+    <a class='right-next' id="next-link" href="topic-modelling-manajemen.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Topic Modelling dengan LSA dan LDA</p>
