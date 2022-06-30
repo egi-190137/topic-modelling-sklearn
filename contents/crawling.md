@@ -1,28 +1,8 @@
 # Crawling Data
 
-## Membuat Projek Scrapy
-
-Sebelum melakukan crawling data, kita perlu membuat projek scrapy. Untuk cara membuatnya cukup dengan mengetikkan perintah berikut pada _terminal_ atau _command prompt_.
-
-```
-Scrapy startproject <nama-project>
-```
-
 ## Melakukan Crawling link jurnal
 
-Setelah membuat projek buka direktori projek tersebut dengan perintah berikut:
-
-```
-cd <nama-projek>
-```
-
-Kemudian buat 1 file spider dengan perintah berikut:
-
-```
-Scrapy genspider link example.com
-```
-
-Lalu edit file spider menjadi seperti code di bawah ini:
+Buat 1 file python, lalu edit file spider menjadi seperti code di bawah ini:
 
 ```python
 import scrapy
@@ -32,69 +12,55 @@ class LinkSpider(scrapy.Spider):
     name = 'link'
     start_urls = []
 
-    for i in range(1, 120+1):
-        start_urls.append(f'https://pta.trunojoyo.ac.id/c_search/byprod/10/{i}')
+    def start_requests(self):
+        urls = []
+        for i in range(1, 24+1):
+            urls.append(f'https://pta.trunojoyo.ac.id/c_search/byprod/7/{i}')
 
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse)
     def parse(self, response):
-        for jurnal in response.css('#content_journal > ul > li'):
+        for i in range(1, 5+1):
             yield {
-                'link': jurnal.css('div:nth-child(3) > a::attr(href)').get(),
+                'link': response.css(f'#content_journal > ul > li:nth-child({i}) > div:nth-child(3) > a::attr(href)').get(),
             }
 ```
 
 Perintah untuk melakukan crawling data dan memasukkan data ke dalam file csv:
 
 ```
-Scrapy crawl link -O <nama-file>.csv
+Scrapy runspider <code-python>.py -O <nama-file>.csv
 ```
 
 Hasil Crawling link jurnal : [file](https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/link.csv)
-|link |
-|------------------------------------------------------------------------------------------------------------------------|
-|https://pta.trunojoyo.ac.id/welcome/detail/070411100007 |
-|https://pta.trunojoyo.ac.id/welcome/detail/070411100007 |
-|https://pta.trunojoyo.ac.id/welcome/detail/070411100007 |
-|https://pta.trunojoyo.ac.id/welcome/detail/070411100007 |
-|https://pta.trunojoyo.ac.id/welcome/detail/070411100007 |
 
 ## Crawling Judul dan abstraksi Jurnal
 
-Buat file spider baru untuk crawling judul dan abstraksi jurnal
-
-```
-Scrapy genspider detail example.com
-```
-
-Lalu edit file spider seperti code berikut:
+Buat file python baru untuk crawling judul dan abstraksi jurnal, Lalu edit file spider seperti code berikut:
 
 ```python
 import scrapy
 import pandas as pd
 
 class DetailSpider(scrapy.Spider):
-    name = 'detail'
-    data_csv = pd.read_csv('link.csv').values
-    start_urls = [ link[0] for link in data_csv ]
+    name = "quotes"
+
+    def start_requests(self):
+        data_csv = pd.read_csv('link.csv').values
+        urls = [ link[0] for link in data_csv ]
+
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
         yield {
-            'Judul': response.css('#content_journal > ul > li > div:nth-child(2) > a::text').extract(),
-            'Abstraksi': response.css('#content_journal > ul > li > div:nth-child(4) > div:nth-child(2) > p::text').extract(),
+            'judul': response.css('#content_journal > ul > li > div:nth-child(2) > a::text').get(),
+            'abstraksi': response.css('#content_journal > ul > li > div:nth-child(4) > div:nth-child(2) > p::text').get(),
         }
 ```
 
 Perintah untuk melakukan crawling data dan memasukkan data ke dalam file csv:
 
 ```
-Scrapy crawl link -O <nama-file>.csv
+Scrapy runspider <code-python>.py -O <nama-file>.csv
 ```
-
-Hasil Crawling jududl dan abstraksi jurnal: [file](https://github.com/egi-190137/topic-modelling-sklearn/blob/main/contents/detail_pta.csv)
-
-| Judul                                   | Abstraksi                                                         |
-| --------------------------------------- | ----------------------------------------------------------------- |
-| PERANCANGAN DAN IMPLEMENTASI SISTEM ... | Sistem informasi akademik (SIAKAD) merupakan sistem informasi ... |
-| PERANCANGAN DAN IMPLEMENTASI SISTEM ... | Sistem informasi akademik (SIAKAD) merupakan sistem informasi ... |
-| PERANCANGAN DAN IMPLEMENTASI SISTEM ... | Sistem informasi akademik (SIAKAD) merupakan sistem informasi ... |
-| Gerak Pekerja Pada Game Real Time ...   | Gerak pekerja ada pada game yang memiliki genre RTS (Real-Time... |
-| Gerak Pekerja Pada Game Real Time ...   | Gerak pekerja ada pada game yang memiliki genre RTS (Real-Time... |

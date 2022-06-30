@@ -5,4 +5,5 @@ format: jb-book
 root: intro
 chapters:
   - file: contents/crawling
-  - file: contents/topic-modelling
+  - file: contents/topic-modelling-manajemen
+  - file: contents/kmeans-and-spectral-clustering-manajemen

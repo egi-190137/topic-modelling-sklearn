@@ -54,7 +54,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Crawling Data" href="crawling.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -110,19 +109,24 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome to your Jupyter Book
+                    Welcome to My Jupyter Book
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="crawling.html">
    Crawling Data
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="topic-modelling-manajemen.html">
    Topic Modelling dengan LSA dan LDA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kmeans-and-spectral-clustering-manajemen.html">
+   Clustering Jurnal menggunakan K-Means
   </a>
  </li>
 </ul>
@@ -184,7 +188,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/contents/topic-modelling.ipynb"
+        <a href="https://mybinder.org/v2/gh/egi-190137/topic-modelling-sklearn/master?urlpath=tree/docs/contents/topic-modelling.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -202,7 +206,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/contents/topic-modelling.ipynb"
+        <a href="https://colab.research.google.com/github/egi-190137/topic-modelling-sklearn/blob/master/docs/contents/topic-modelling.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -245,7 +249,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/egi-190137/topic-modelling-sklearn"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -262,7 +266,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontents/topic-modelling.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/egi-190137/topic-modelling-sklearn/issues/new?title=Issue%20on%20page%20%2Fcontents/topic-modelling.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -382,18 +386,6 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mengganti-nama-kolom-cleaned-judul-dengan-judul">
-     Mengganti nama kolom
-     <strong>
-      cleaned_judul
-     </strong>
-     dengan
-     <strong>
-      judul
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#contoh-judul-yang-telah-di-lakukan-pre-processing">
      Contoh judul yang telah di lakukan
      <em>
@@ -500,18 +492,6 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hapus-kolom-judul">
      Hapus kolom ‘judul’
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mengganti-nama-kolom-cleaned-judul-dengan-judul">
-     Mengganti nama kolom
-     <strong>
-      cleaned_judul
-     </strong>
-     dengan
-     <strong>
-      judul
-     </strong>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -880,16 +860,6 @@ Untuk visualisasi kata yang paling sering muncul.</p></li>
 </div>
 </div>
 </div>
-</section>
-<section id="mengganti-nama-kolom-cleaned-judul-dengan-judul">
-<h3>Mengganti nama kolom <strong>cleaned_judul</strong> dengan <strong>judul</strong><a class="headerlink" href="#mengganti-nama-kolom-cleaned-judul-dengan-judul" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;judul&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -915,7 +885,7 @@ Untuk visualisasi kata yang paling sering muncul.</p></li>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>judul</th>
+      <th>cleaned_judul</th>
     </tr>
   </thead>
   <tbody>
@@ -953,7 +923,47 @@ Untuk visualisasi kata yang paling sering muncul.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;gerak pekerja game real time strategy finite state machine&#39;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\indexes\base.py:3621,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3620</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3621</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3622</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\_libs\index.pyx:136,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\_libs\index.pyx:163,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File pandas\_libs\hashtable_class_helper.pxi:5198,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">File pandas\_libs\hashtable_class_helper.pxi:5206,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: &#39;judul&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;judul&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\frame.py:3505,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3503</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3504</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3505</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3506</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3507</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\indexes\base.py:3623,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3621</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3622</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3623</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">3624</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3625</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3626</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3627</span>     <span class="c1">#  the TypeError.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3628</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &#39;judul&#39;
 </pre></div>
 </div>
 </div>
@@ -1434,7 +1444,7 @@ klasifikasi studi android sistem proses perancangan arsip evaluasi run informasi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/topic-modelling_64_0.png" src="../_images/topic-modelling_64_0.png" />
+<img alt="../_images/topic-modelling_62_0.png" src="../_images/topic-modelling_62_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1444,7 +1454,7 @@ klasifikasi studi android sistem proses perancangan arsip evaluasi run informasi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/topic-modelling_65_0.png" src="../_images/topic-modelling_65_0.png" />
+<img alt="../_images/topic-modelling_63_0.png" src="../_images/topic-modelling_63_0.png" />
 </div>
 </div>
 </section>
@@ -1479,13 +1489,6 @@ klasifikasi studi android sistem proses perancangan arsip evaluasi run informasi
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="crawling.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Crawling Data</p>
-        </div>
-    </a>
 </div>
             </footer>
         </div>

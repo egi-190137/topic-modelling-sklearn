@@ -138,15 +138,7 @@ df.head()
 df.drop(['judul'],axis=1,inplace=True)
 
 
-# ### Mengganti nama kolom __cleaned_judul__ dengan __judul__ 
-
 # In[11]:
-
-
-df.columns = ['judul']
-
-
-# In[12]:
 
 
 df.head()
@@ -154,7 +146,7 @@ df.head()
 
 # ### Contoh judul yang telah di lakukan *pre-processing*
 
-# In[13]:
+# In[12]:
 
 
 df['judul'][0]
